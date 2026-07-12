@@ -538,6 +538,22 @@ img { display: block; max-width: 100%; }
 
 .uniform-approx-note { margin: 12px 0 0; color: #8894a0; font-size: 11px; font-style: italic; line-height: 1.55; }
 
+/* ---- Visible media attribution (credit · source · license) ---- */
+.media-attr { margin: 0; color: #97a3ab; font-size: 11.5px; line-height: 1.55; overflow-wrap: anywhere; }
+.media-attr a { color: #c2ccd2; text-decoration: underline; text-underline-offset: 2px; }
+.media-attr a:hover { color: var(--text); }
+.media-attr a:focus-visible { outline: 2px solid rgba(154,245,96,.55); outline-offset: 2px; border-radius: 3px; }
+.media-attr__label { color: #7f8c95; text-transform: uppercase; letter-spacing: .05em; font-size: 10px; font-weight: 700; }
+.media-attr__sep { color: #5a666e; }
+.media-attr__trademark { color: #9aa4ab; font-style: italic; }
+.media-provenance { display: flex; flex-direction: column; gap: 6px; margin-top: 14px; }
+.media-provenance:empty { display: none; }
+/* Hero overlay variant — subtle, bottom-right, clipped by .detail-hero overflow */
+.media-attr--hero { position: absolute; right: 14px; bottom: 12px; z-index: 2; max-width: min(90%, 440px); padding: 5px 10px; border-radius: 8px; background: rgba(3,6,8,.62); border: 1px solid rgba(255,255,255,.08); text-align: right; }
+@media (max-width: 620px) {
+  .media-attr--hero { left: 20px; right: 20px; bottom: 10px; max-width: none; text-align: left; }
+}
+
 /* Active filter chips */
 .active-filters { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 12px; }
 .active-filters__label { color: #8b9aa6; font: 600 10px "Chakra Petch", sans-serif; letter-spacing: .06em; text-transform: uppercase; }
