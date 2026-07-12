@@ -2,7 +2,6 @@ import { siteConfig } from "@/lib/siteConfig";
 import { units } from "@/data/units";
 
 const BASE = siteConfig.url;
-const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 
 export default function sitemap() {
   const staticEntries = [
@@ -13,18 +12,17 @@ export default function sitemap() {
     { url: `${BASE}/corrections`, changeFrequency: "yearly", priority: 0.4 },
   ];
 
-  const unitEntries = units.map((unit) => {
-    const entry = {
-      url: `${BASE}/units/${unit.slug}`,
-      changeFrequency: "monthly",
-      priority: unit.detailLevel === "expanded" ? 0.8 : 0.6,
-    };
-    // Only attach a real editorial date; never invent one.
-    if (ISO_DATE.test(unit.updatedAt || "")) {
-      entry.lastModified = new Date(unit.updatedAt);
-    }
-    return entry;
-  });
+  // lastModified is intentionally omitted. The only per-unit date, `updatedAt`,
+  // is a shared schema/migration stamp — an identical hardcoded value applied to
+  // every expanded unit — not a genuine per-unit content-modification date, so it
+  // must not populate sitemap lastModified. No explicit content-update field
+  // (e.g. contentUpdatedAt) exists yet, and dates must never be invented; units
+  // therefore carry no lastModified until a real content-update date is recorded.
+  const unitEntries = units.map((unit) => ({
+    url: `${BASE}/units/${unit.slug}`,
+    changeFrequency: "monthly",
+    priority: unit.detailLevel === "expanded" ? 0.8 : 0.6,
+  }));
 
   return [...staticEntries, ...unitEntries];
 }

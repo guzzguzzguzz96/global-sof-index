@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "media:audit": "node scripts/audit-media.js",
-    "seo:audit": "node scripts/audit-seo.js"
+    "seo:audit": "node scripts/audit-seo.js",
+    "editorial:audit": "node scripts/audit-editorial.js"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

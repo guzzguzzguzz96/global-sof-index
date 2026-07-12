@@ -6,9 +6,12 @@ import JsonLd from "@/components/JsonLd";
 import CapabilityRadar from "@/components/CapabilityRadar";
 import MediaGallery from "@/components/MediaGallery";
 import UnitCard from "@/components/UnitCard";
+import EditorialStatus from "@/components/EditorialStatus";
+import SourceList from "@/components/SourceList";
 import { getUnitBySlug, getRelatedUnits, units } from "@/data/units";
 import { siteConfig } from "@/lib/siteConfig";
 import { DEFAULT_OG_IMAGE, DEFAULT_TWITTER_IMAGE } from "@/lib/seo";
+import { displayFact, UNKNOWN_STATE } from "@/lib/editorial";
 
 export function generateStaticParams() {
   return units.map((unit) => ({ slug: unit.slug }));
@@ -118,10 +121,16 @@ export default async function UnitDetailPage({ params }) {
             </div>
           </div>
           <div className="detail-status-panel">
-            <StatusRow label="DOSSIER LEVEL" value={unit.detailLevel.toUpperCase()} />
+            <StatusRow label="DOSSIER LEVEL" value={unit.editorial.completeness.toUpperCase()} />
             <StatusRow label="MEDIA" value={unit.mediaStatus.toUpperCase()} />
             <StatusRow label="EQUIPMENT DATA" value={unit.equipment.dataStatus.toUpperCase()} />
-            <StatusRow label="LAST EDITORIAL PASS" value={unit.updatedAt} active />
+            <StatusRow
+              label="LAST REVIEWED"
+              value={unit.editorial.lastReviewed
+                ? <time dateTime={unit.editorial.lastReviewed}>{unit.editorial.lastReviewed}</time>
+                : "Editorial review pending"}
+              active={Boolean(unit.editorial.lastReviewed)}
+            />
           </div>
         </div>
       </section>
@@ -141,12 +150,12 @@ export default async function UnitDetailPage({ params }) {
             <PanelHeading eyebrow="FILE 01" title="ประวัติและบทบาทโดยย่อ" meta="OPEN-SOURCE SUMMARY" />
             <p className="lead-copy">{unit.history.summary}</p>
             <div className="fact-grid">
-              <Fact label="Founded" value={unit.founded} />
-              <Fact label="Branch" value={unit.branch} />
-              <Fact label="Unit type" value={unit.unitType} />
-              <Fact label="Status" value={unit.status} />
-              <Fact label="Personnel" value={unit.personnel} />
-              <Fact label="Primary environment" value={unit.environment.join(" / ")} />
+              <Fact label="Founded" value={displayFact(unit.founded, UNKNOWN_STATE.RESEARCH_PENDING)} />
+              <Fact label="Branch" value={displayFact(unit.branch, UNKNOWN_STATE.NOT_CONFIRMED)} />
+              <Fact label="Unit type" value={displayFact(unit.unitType)} />
+              <Fact label="Status" value={displayFact(unit.status)} />
+              <Fact label="Personnel" value={displayFact(unit.personnel)} />
+              <Fact label="Primary environment" value={displayFact(unit.environment.join(" / "))} />
             </div>
           </section>
 
@@ -199,17 +208,7 @@ export default async function UnitDetailPage({ params }) {
 
           <section className="intel-panel" id="sources">
             <PanelHeading eyebrow="FILE 06" title="แหล่งข้อมูลและสถานะความเชื่อมั่น" meta="EDITORIAL TRACEABILITY" />
-            {unit.sources.length ? (
-              <div className="source-list">
-                {unit.sources.map((source, index) => (
-                  <article key={`${source.title}-${index}`}>
-                    <span>{String(index + 1).padStart(2, "0")}</span>
-                    <div><h3>{source.title}</h3><p>{source.note}</p></div>
-                    {source.url ? <a href={source.url} target="_blank" rel="noreferrer">OPEN ↗</a> : <b>PENDING</b>}
-                  </article>
-                ))}
-              </div>
-            ) : <div className="source-empty">ยังอยู่ระหว่างรวบรวมแหล่งอ้างอิงสำหรับโปรไฟล์นี้</div>}
+            <SourceList sources={unit.sources} />
           </section>
         </div>
 
@@ -221,7 +220,7 @@ export default async function UnitDetailPage({ params }) {
               <Snapshot label="Abbreviation" value={unit.code} />
               <Snapshot label="Country" value={`${unit.flag} ${unit.country}`} />
               <Snapshot label="Continent" value={unit.continent} />
-              <Snapshot label="Branch" value={unit.branch} />
+              <Snapshot label="Branch" value={displayFact(unit.branch, UNKNOWN_STATE.NOT_CONFIRMED)} />
               <Snapshot label="Primary role" value={unit.role} />
             </div>
           </section>
@@ -236,6 +235,11 @@ export default async function UnitDetailPage({ params }) {
           <section className="intel-panel">
             <PanelHeading eyebrow="ORIGIN" title="Country / Location" meta={unit.continent.toUpperCase()} />
             <div className="map-visual"><span>{unit.flag}</span><strong>{unit.country}</strong><small>ORIGIN / OPERATING BASE</small></div>
+          </section>
+
+          <section className="intel-panel">
+            <PanelHeading eyebrow="EDITORIAL" title="Editorial Status" meta={unit.editorial.completeness.toUpperCase()} />
+            <EditorialStatus editorial={unit.editorial} />
           </section>
 
           <section className="intel-panel confidence-panel">
