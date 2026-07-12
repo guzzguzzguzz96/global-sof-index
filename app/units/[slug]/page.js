@@ -8,10 +8,13 @@ import MediaGallery from "@/components/MediaGallery";
 import UnitCard from "@/components/UnitCard";
 import EditorialStatus from "@/components/EditorialStatus";
 import SourceList from "@/components/SourceList";
+import UniformColorSwatch from "@/components/UniformColorSwatch";
+import CamouflagePatternSwatch from "@/components/CamouflagePatternSwatch";
 import { getUnitBySlug, getRelatedUnits, units } from "@/data/units";
 import { siteConfig } from "@/lib/siteConfig";
 import { DEFAULT_OG_IMAGE, DEFAULT_TWITTER_IMAGE } from "@/lib/seo";
 import { displayFact, UNKNOWN_STATE } from "@/lib/editorial";
+import { normalizeColorList, normalizePatternList } from "@/lib/uniformColors";
 
 export function generateStaticParams() {
   return units.map((unit) => ({ slug: unit.slug }));
@@ -108,7 +111,7 @@ export default async function UnitDetailPage({ params }) {
           <Link href="/#database" className="back-link">← BACK TO DATABASE</Link>
           <div className="detail-identity">
             <div className="detail-emblem">
-              {unit.logoUrl ? <img src={unit.logoUrl} alt={`ตราสัญลักษณ์ ${unit.code}`} /> : <span>{unit.code.slice(0, 4)}</span>}
+              {unit.logoUrl ? <img src={unit.logoUrl} alt={unit.media?.emblem?.alt || `ตราสัญลักษณ์ ${unit.code}`} /> : <span>{unit.code.slice(0, 4)}</span>}
             </div>
             <div>
               <div className="detail-country"><span>{unit.flag}</span>{unit.country} · {unit.continent}</div>
@@ -120,6 +123,9 @@ export default async function UnitDetailPage({ params }) {
               </div>
             </div>
           </div>
+          {unit.media?.emblem?.note ? (
+            <p className="emblem-provenance-note">{unit.media.emblem.note}</p>
+          ) : null}
           <div className="detail-status-panel">
             <StatusRow label="DOSSIER LEVEL" value={unit.editorial.completeness.toUpperCase()} />
             <StatusRow label="MEDIA" value={unit.mediaStatus.toUpperCase()} />
@@ -193,11 +199,14 @@ export default async function UnitDetailPage({ params }) {
           <section className="intel-panel" id="uniform">
             <PanelHeading eyebrow="FILE 04" title="เครื่องแบบ สี และลายพราง" meta="MISSION & PERIOD DEPENDENT" />
             <div className="uniform-grid">
-              <UniformCard label="Base colors" values={unit.uniform.colors} />
-              <UniformCard label="Camouflage patterns" values={unit.uniform.patterns} />
-              <UniformCard label="Headgear" values={unit.uniform.headgear} />
-              <UniformCard label="Armor & load carriage" values={unit.uniform.armor} />
+              <UniformColors label="Base colors" values={unit.uniform.colors} />
+              <UniformPatterns label="Camouflage patterns" values={unit.uniform.patterns} />
+              <UniformChips label="Headgear" values={unit.uniform.headgear} />
+              <UniformChips label="Armor & load carriage" values={unit.uniform.armor} />
             </div>
+            <p className="uniform-approx-note">
+              สเวตช์สีและตัวอย่างลายพรางเป็นเพียงภาพอ้างอิงโดยประมาณเพื่อการนำเสนอเชิงบรรณาธิการ ไม่ใช่สีหรือลายมาตรฐานประจำการ สีจริงอาจต่างไปตามแสง เนื้อผ้า การใช้งาน และผู้ผลิต
+            </p>
             <p className="uniform-note">{unit.uniform.note}</p>
           </section>
 
@@ -286,8 +295,48 @@ function EquipmentGroup({ title, items, empty }) {
     </div>
   );
 }
-function UniformCard({ label, values }) {
-  return <article><span>{label}</span><div>{values.map((value) => <strong key={value}>{value}</strong>)}</div></article>;
+function UniformColors({ label, values }) {
+  const items = normalizeColorList(values);
+  return (
+    <article className="uniform-card uniform-card--colors">
+      <span>{label}</span>
+      {items.length ? (
+        <div className="uswatch-list">
+          {items.map((item, i) => <UniformColorSwatch key={`${item.name}-${i}`} item={item} />)}
+        </div>
+      ) : (
+        <p className="uniform-pending">Research pending</p>
+      )}
+    </article>
+  );
+}
+function UniformPatterns({ label, values }) {
+  const items = normalizePatternList(values);
+  return (
+    <article className="uniform-card uniform-card--patterns">
+      <span>{label}</span>
+      {items.length ? (
+        <div className="camo-tile-list">
+          {items.map((item, i) => <CamouflagePatternSwatch key={`${item.name}-${i}`} item={item} />)}
+        </div>
+      ) : (
+        <p className="uniform-pending">Research pending</p>
+      )}
+    </article>
+  );
+}
+function UniformChips({ label, values }) {
+  const items = (Array.isArray(values) ? values : []).filter((v) => typeof v === "string" && v.trim());
+  return (
+    <article className="uniform-card">
+      <span>{label}</span>
+      {items.length ? (
+        <div>{items.map((value) => <strong key={value}>{value}</strong>)}</div>
+      ) : (
+        <p className="uniform-pending">Research pending</p>
+      )}
+    </article>
+  );
 }
 function Snapshot({ label, value }) {
   return <div><span>{label}</span><strong>{value}</strong></div>;
