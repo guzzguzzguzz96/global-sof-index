@@ -17,7 +17,7 @@ const rows = units.map((unit) => {
 
   let missingAlt = false;
   if (isPhoto) missingAlt = !cover?.alt || cover.alt.trim().length < MIN_ALT;
-  else if (mode === "official-emblem") missingAlt = !emblem?.alt || emblem.alt.trim().length < MIN_ALT;
+  else if (mode === "official-emblem" || mode === "parent-branch-insignia") missingAlt = !emblem?.alt || emblem.alt.trim().length < MIN_ALT;
 
   return { unit, mode, missingSourceUrl, missingLicense, missingAlt };
 });
@@ -28,6 +28,7 @@ const stats = {
   totalUnits: units.length,
   verifiedCover: count((r) => r.mode === "verified"),
   emblemOnly: count((r) => r.mode === "official-emblem"),
+  parentBranchInsignia: count((r) => r.mode === "parent-branch-insignia"),
   editorial: count((r) => r.mode === "editorial"),
   representative: count((r) => r.mode === "representative"),
   pending: count((r) => r.mode === "pending"),
@@ -45,6 +46,7 @@ console.log("");
 console.log("  Media resolution");
 console.log(line("verified cover photo", stats.verifiedCover));
 console.log(line("official emblem", stats.emblemOnly));
+console.log(line("parent-branch insignia", stats.parentBranchInsignia));
 console.log(line("editorial visual", stats.editorial));
 console.log(line("representative media", stats.representative));
 console.log(line("media research pending", stats.pending));

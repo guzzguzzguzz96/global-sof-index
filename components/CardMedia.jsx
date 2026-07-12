@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import MediaFallback from "./MediaFallback";
-import { MEDIA_LABELS, pickMediaMode } from "@/lib/media";
+import { MEDIA_LABELS, pickMediaMode, isEmblemMode } from "@/lib/media";
 
 export default function CardMedia({
   cover,
@@ -36,7 +36,7 @@ export default function CardMedia({
         <MediaFallback
           mode={mode}
           code={code}
-          emblem={mode === "official-emblem" ? emblem : null}
+          emblem={isEmblemMode(mode) ? emblem : null}
           onEmblemError={() => setEmblemFailed(true)}
         />
       )}

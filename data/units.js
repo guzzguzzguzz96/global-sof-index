@@ -106,26 +106,31 @@ const detailed = {
     logoUrl: commons("U.S. Navy SEALs Special Warfare insignia.png", 500),
     coverImage: commons("United States Navy SEALs 095.jpg", 1800),
     mediaStatus: "representative",
-    history: { summary: "DEVGRU เป็นหน่วยภารกิจพิเศษของกองทัพเรือสหรัฐฯ ที่พัฒนาจากแนวคิดการต่อต้านการก่อการร้ายทางทะเลหลังเหตุการณ์ปลายทศวรรษ 1970 ภารกิจ โครงสร้าง และอุปกรณ์จำนวนมากไม่เปิดเผยต่อสาธารณะ จึงควรแยกข้อมูลของ U.S. Navy SEAL โดยรวมออกจากข้อมูลที่ยืนยันเฉพาะ DEVGRU" },
+    // The displayed insignia is the general U.S. Naval Special Warfare / SEAL
+    // insignia, not a confirmed DEVGRU-specific emblem — labelled accordingly.
+    emblemKind: "parent-branch-insignia",
+    emblemNote: "The U.S. Naval Special Warfare insignia is displayed as parent-branch identification and is not presented as a confirmed DEVGRU-specific emblem.",
+    reviewedOn: "2026-07-12",
+    history: { summary: "Naval Special Warfare Development Group (DEVGRU) พัฒนามาจากหน่วยที่รู้จักในชื่อ SEAL Team Six ซึ่งมีรายงานว่าจัดตั้งขึ้นราวปี 1980 หลังความล้มเหลวของปฏิบัติการ Eagle Claw ในอิหร่าน เพื่อสร้างขีดความสามารถต่อต้านการก่อการร้ายทางทะเลโดยเฉพาะ ต่อมาในปี 1987 หน่วยได้รับการปรับโครงสร้างและเปลี่ยนชื่อเป็น Naval Special Warfare Development Group ภารกิจที่ระบุอย่างเป็นทางการเน้นการทดสอบ ประเมิน และพัฒนายุทโธปกรณ์ เทคนิค และยุทธวิธีให้กับ Naval Special Warfare ส่วนบทบาทด้านการต่อต้านการก่อการร้ายและปฏิบัติการเสี่ยงสูงเป็นสิ่งที่มีการรายงานอย่างกว้างขวางแต่ไม่ได้เปิดเผยรายละเอียดอย่างเป็นทางการ โครงสร้าง กำลังพล และบัญชีอุปกรณ์ของหน่วยเป็นความลับ ข้อมูลจำนวนมากที่เผยแพร่ในสาธารณะเป็นการคาดการณ์และควรใช้ด้วยความระมัดระวัง ภาพถ่าย U.S. Navy SEAL ทั่วไปไม่ควรถูกใช้เป็นการยืนยันว่าเป็น DEVGRU" },
     equipment: {
-      dataStatus: "publicly reported / mission dependent",
-      primary: [
-        weapon("HK416 family", "5.56×45 mm carbine", "แพลตฟอร์มที่ถูกเชื่อมโยงกับหน่วยภารกิจพิเศษสหรัฐฯ อย่างกว้างขวาง แต่รูปแบบและชุดแต่งเปลี่ยนตามยุค", "reported"),
-        weapon("SIG MCX family", "Modular carbine", "มีการรายงานการใช้งานในชุมชนหน่วยปฏิบัติการพิเศษสหรัฐฯ การระบุรุ่นย่อยกับภารกิจเฉพาะมักไม่เปิดเผย", "reported"),
-      ],
-      sidearms: [
-        weapon("Glock 19", "9×19 mm pistol", "ปืนพกที่พบอย่างแพร่หลายในหน่วยปฏิบัติการพิเศษสหรัฐฯ", "documented"),
-        weapon("SIG Sauer P226", "9×19 mm pistol", "มีความเกี่ยวข้องกับ U.S. Navy SEAL ในอดีตและช่วงเวลาหนึ่ง ไม่ควรตีความว่าเป็นอาวุธหลักปัจจุบันของทุกทีม", "historical"),
-      ],
-      blades: [weapon("Mission-selected fighting / utility knife", "Knife / tool", "ไม่มีมีดรุ่นเดียวที่ยืนยันว่าเป็นมาตรฐานถาวรของทุกทีม", "reported")],
-      support: [weapon("Suppressors, laser aiming modules and night optics", "Mission accessories", "ชุดอุปกรณ์ขึ้นกับภารกิจและช่วงเวลา", "documented")],
+      dataStatus: "classified / not officially confirmed",
+      // DEVGRU-specific weapon loadouts are classified and not officially disclosed.
+      // No acceptable open source verified a unit-specific model, so none are asserted
+      // here rather than presenting speculation as fact (mission-dependent by nature).
+      primary: [],
+      sidearms: [],
+      blades: [],
+      support: [],
     },
     uniform: {
-      colors: ["Ranger green", "Coyote brown", "Mission-specific neutral colors"],
-      patterns: ["MultiCam family", "Maritime / environment-specific clothing"],
-      headgear: ["High-cut ballistic helmet", "Maritime helmet configurations"],
-      armor: ["Modular plate carrier", "Maritime load carriage", "Night-vision compatible equipment"],
-      note: "ไม่มีเครื่องแบบ DEVGRU แบบเดียวสำหรับทุกภารกิจ ภาพสาธารณะจำนวนมากเป็นภาพ Navy SEAL ทั่วไปและไม่ควรใช้ยืนยันทีมย่อยหรือช่วงเวลาโดยไม่มีบริบท",
+      // No public source maps to a DEVGRU-specific uniform/colour/pattern, and a
+      // unit uniform must not be inferred from generic U.S. SOF imagery, so these
+      // claims are held at research-pending (UI fields preserved, not deleted).
+      colors: [],
+      patterns: [],
+      headgear: [],
+      armor: [],
+      note: "ยังไม่มีแหล่งอ้างอิงสาธารณะที่ยืนยันเครื่องแบบ สี หรือลายพรางเฉพาะของ DEVGRU รายละเอียดจึงอยู่ในสถานะ research pending และไม่ควรสรุปจากภาพ U.S. Navy SEAL ทั่วไป",
     },
     gallery: [
       { url: commons("United States Navy SEALs 095.jpg", 1500), status: "representative", caption: "ภาพ U.S. Navy SEAL จากแหล่งสาธารณะ ใช้เป็นภาพประกอบชุมชน Naval Special Warfare ไม่ใช่การยืนยันว่าเป็น DEVGRU" },
@@ -133,14 +138,15 @@ const detailed = {
       { url: commons("United States Navy SEALs 605.jpg", 1500), status: "representative", caption: "ภาพ U.S. Navy SEAL ในบริบทการฝึก" },
     ],
     timeline: [
-      { year: "1980", title: "Formation era", description: "ก่อตั้งในบริบทการพัฒนาขีดความสามารถต่อต้านการก่อการร้ายของสหรัฐฯ" },
-      { year: "1980s–90s", title: "Capability expansion", description: "พัฒนาความสามารถทางทะเล การช่วยตัวประกัน และปฏิบัติการภารกิจพิเศษ" },
+      { year: "1980", title: "SEAL Team Six formed", description: "จัดตั้งในบริบทหลังปฏิบัติการ Eagle Claw เพื่อขีดความสามารถต่อต้านการก่อการร้ายทางทะเล (มีรายงานว่าเริ่มราวปี 1980)" },
+      { year: "1987", title: "Redesignated NSWDG", description: "ปรับโครงสร้างและเปลี่ยนชื่อเป็น Naval Special Warfare Development Group" },
       { year: "2001+", title: "Global counter-terror era", description: "มีบทบาทในยุคปฏิบัติการต่อต้านการก่อการร้ายทั่วโลก โดยรายละเอียดจำนวนมากยังเป็นความลับ" },
-      { year: "Today", title: "Special mission role", description: "ยังคงเป็นองค์ประกอบระดับสูงของระบบปฏิบัติการพิเศษสหรัฐฯ" },
+      { year: "2011", title: "Publicly acknowledged raid", description: "กำลังพลจากหน่วยเข้าร่วมปฏิบัติการที่ Abbottabad ซึ่งรัฐบาลสหรัฐฯ ยืนยันในระดับชาติ" },
     ],
     sources: [
-      { title: "U.S. Naval Special Warfare Command", note: "ใช้ตรวจสอบบริบทของ Naval Special Warfare โดยรวม ไม่ใช่รายละเอียดลับของ DEVGRU", url: "https://www.nsw.navy.mil/" },
-      { title: "Wikimedia Commons — U.S. Navy SEAL imagery", note: "แหล่งภาพสาธารณะสำหรับงานต้นแบบ โดยต้องตรวจสอบหน้าลิขสิทธิ์รายไฟล์", url: "https://commons.wikimedia.org/wiki/Category:United_States_Navy_SEALs" },
+      { title: "The Secret Unit That Killed Bin Laden", publisher: "History.com (A&E Networks)", url: "https://www.history.com/articles/the-secret-unit-that-killed-bin-laden", type: "reputable-media", accessedAt: "2026-07-12", supports: ["history"], notes: "ที่มาหลังปฏิบัติการ Eagle Claw การเปลี่ยนชื่อเป็น NSWDG ในปี 1987 และบทบาทต่อต้านการก่อการร้าย" },
+      { title: "Naval Special Warfare Development Group (DEVGRU) — research guide", publisher: "U.S. Naval War College Library", url: "https://usnwc.libguides.com/c.php?g=943947&p=6821702", type: "reference", accessedAt: "2026-07-12", supports: ["history", "branch"], notes: "คู่มือค้นคว้าของสถาบันทางทหารสหรัฐฯ ยืนยันชื่อหน่วยและภารกิจพัฒนายุทโธปกรณ์/ยุทธวิธีของ Navy SEAL" },
+      { title: "SEAL Team Six (Naval Special Warfare Development Group)", publisher: "Wikipedia", url: "https://en.wikipedia.org/wiki/SEAL_Team_Six", type: "reference", accessedAt: "2026-07-12", supports: ["history", "branch"], notes: "แหล่งอ้างอิงระดับตติยภูมิ ใช้ประกอบบริบทชื่อทางการ สายการบังคับบัญชา และช่วงเวลาก่อตั้ง/ปรับโครงสร้าง" },
     ],
   },
   "DELTA": {
@@ -151,23 +157,33 @@ const detailed = {
     status: "Active; official details are limited",
     personnel: "Classified",
     environment: ["Urban", "Airborne", "Global expeditionary"],
-    history: { summary: "Delta Force หรือชื่อที่สาธารณะมักใช้เรียก 1st SFOD-D เป็นหน่วยภารกิจพิเศษของกองทัพบกสหรัฐฯ ที่จัดตั้งขึ้นเพื่อรับมือการก่อการร้าย การช่วยตัวประกัน และเป้าหมายที่มีความสำคัญสูง ข้อมูลทางการเกี่ยวกับโครงสร้างและยุทโธปกรณ์มีจำกัดมาก" },
+    reviewedOn: "2026-07-12",
+    history: { summary: "Delta Force หรือชื่อทางการคือ 1st Special Forces Operational Detachment-Delta (1st SFOD-D) จัดตั้งขึ้นในปี 1977 โดยพันเอก Charles Beckwith ผู้ได้รับแรงบันดาลใจจากการปฏิบัติงานร่วมกับหน่วย SAS ของอังกฤษ เพื่อให้กองทัพบกสหรัฐฯ มีขีดความสามารถด้านการต่อต้านการก่อการร้ายและการช่วยตัวประกันโดยเฉพาะ หน่วยขึ้นการบังคับบัญชาทางธุรการกับกองทัพบก และปฏิบัติภารกิจภายใต้ Joint Special Operations Command (JSOC) ปฏิบัติการสำคัญครั้งแรกคือ Operation Eagle Claw ในเดือนเมษายน 1980 ซึ่งเป็นความพยายามช่วยตัวประกันชาวอเมริกันในกรุงเตหะราน แต่ต้องยุติที่จุดพักกลางทะเลทราย (Desert One) หลังเกิดอุบัติเหตุอากาศยานชนกันจนมีผู้เสียชีวิต 8 นาย ความล้มเหลวดังกล่าวนำไปสู่การปฏิรูปหน่วยปฏิบัติการพิเศษของสหรัฐฯ ต่อมารัฐบาลสหรัฐฯ ยืนยันการมีส่วนร่วมของหน่วยในปฏิบัติการปี 2019 ที่ทำให้ผู้นำ ISIS เสียชีวิต ทั้งนี้รายละเอียดกำลังพลและอุปกรณ์ของหน่วยยังเป็นความลับ" },
     equipment: {
-      dataStatus: "publicly reported / classified in detail",
-      primary: [weapon("HK416 family", "5.56×45 mm carbine", "เชื่อมโยงกับหน่วยภารกิจพิเศษสหรัฐฯ อย่างกว้างขวาง", "reported"), weapon("M4A1 family", "5.56×45 mm carbine", "แพลตฟอร์มมาตรฐานที่ปรับแต่งได้หลากหลาย", "documented")],
-      sidearms: [weapon("Glock 19", "9×19 mm pistol", "ปืนพกที่มีการใช้งานแพร่หลายใน SOF สหรัฐฯ", "documented")],
-      blades: [weapon("Operator-selected utility knife", "Knife / multitool", "ไม่มีรุ่นมาตรฐานสาธารณะที่ยืนยันสำหรับทั้งหน่วย", "reported")],
-      support: [weapon("Night-vision and breaching systems", "Mission equipment", "อุปกรณ์เสริมเปลี่ยนตามภารกิจและทีม", "reported")],
+      dataStatus: "classified / not officially confirmed",
+      // Delta-specific loadouts are classified and mission-dependent; no acceptable
+      // open source verified a unit-specific model, so none are asserted here.
+      primary: [],
+      sidearms: [],
+      blades: [],
+      support: [],
     },
-    uniform: { colors: ["Ranger green", "Coyote brown", "Civilian-compatible neutral colors"], patterns: ["MultiCam family", "Mission-specific clothing"], headgear: ["High-cut ballistic helmets", "Low-profile headgear"], armor: ["Modular plate carriers", "Low-visibility armor"], note: "หน่วยภารกิจพิเศษใช้เครื่องแต่งกายตามบริบท ตั้งแต่ชุดรบเต็มรูปแบบจนถึงชุด low-visibility จึงไม่ควรผูกหน่วยกับลายพรางเดียว" },
+    // No public source maps to a Delta-specific uniform/colour/pattern; a unit
+    // uniform must not be inferred from generic U.S. SOF imagery, so these claims
+    // are held at research-pending (UI fields preserved, not deleted).
+    uniform: { colors: [], patterns: [], headgear: [], armor: [], note: "ยังไม่มีแหล่งอ้างอิงสาธารณะที่ยืนยันเครื่องแบบ สี หรือลายพรางเฉพาะของหน่วย รายละเอียดจึงอยู่ในสถานะ research pending มีเพียงการรายงานทั่วไปถึงการใช้ชุด low-visibility ซึ่งยังไม่ผ่านการตรวจสอบรายแหล่ง" },
     gallery: [],
     timeline: [
-      { year: "1977", title: "Formation", description: "จัดตั้งเพื่อพัฒนาขีดความสามารถต่อต้านการก่อการร้ายของกองทัพบกสหรัฐฯ" },
-      { year: "1980s", title: "Early special missions", description: "เข้าสู่ยุคปฏิบัติการพิเศษและการพัฒนาหลักนิยมช่วยตัวประกัน" },
-      { year: "2001+", title: "Counter-terror operations", description: "มีบทบาทในปฏิบัติการต่อต้านการก่อการร้ายและภารกิจเป้าหมายสำคัญ" },
-      { year: "Today", title: "Classified readiness", description: "รายละเอียดปัจจุบันยังไม่เปิดเผยต่อสาธารณะ" },
+      { year: "1977", title: "Formation", description: "จัดตั้งโดยพันเอก Charles Beckwith โดยได้แรงบันดาลใจจากหน่วย SAS ของอังกฤษ" },
+      { year: "1980", title: "Operation Eagle Claw", description: "ปฏิบัติการช่วยตัวประกันในกรุงเตหะรานที่ต้องยุติที่ Desert One มีผู้เสียชีวิต 8 นาย" },
+      { year: "Post-1980", title: "Special operations reform", description: "ความล้มเหลวนำไปสู่การปฏิรูปและการจัดตั้ง Joint Special Operations Command (JSOC)" },
+      { year: "2019", title: "Publicly confirmed raid", description: "รัฐบาลสหรัฐฯ ยืนยันการมีส่วนร่วมในปฏิบัติการที่ทำให้ผู้นำ ISIS เสียชีวิตในซีเรีย" },
     ],
-    sources: [{ title: "U.S. Army Special Operations context", note: "ใช้เป็นบริบทของระบบปฏิบัติการพิเศษกองทัพบก ไม่ใช่การยืนยันรายละเอียดภายในหน่วย", url: "https://www.socom.mil/" }],
+    sources: [
+      { title: "Delta Force: Missions and History", publisher: "Military.com", url: "https://www.military.com/special-operations/delta-force.html", type: "reputable-media", accessedAt: "2026-07-12", supports: ["history", "branch"], notes: "ยืนยันชื่อทางการ 1st SFOD-D การก่อตั้งปี 1977 โดย Charles Beckwith สายการบังคับบัญชา Army/JSOC และบทบาทต่อต้านการก่อการร้าย/ช่วยตัวประกัน" },
+      { title: "Operation Eagle Claw", publisher: "Airborne & Special Operations Museum Foundation", url: "https://www.asomf.org/operation-eagle-claw/", type: "academic", accessedAt: "2026-07-12", supports: ["history"], notes: "แหล่งพิพิธภัณฑ์ ใช้สำหรับรายละเอียดปฏิบัติการ Eagle Claw ปี 1980 (Desert One) และการนำไปสู่การจัดตั้ง JSOC" },
+      { title: "ISIS Leader Baghdadi Killed in Special Ops Raid in Syria", publisher: "Military.com", url: "https://www.military.com/daily-news/2019/10/27/isis-leader-baghdadi-killed-daring-special-ops-nighttime-raid-syria.html", type: "reputable-media", accessedAt: "2026-07-12", supports: ["history"], notes: "ยืนยันการมีส่วนร่วมของหน่วยในปฏิบัติการปี 2019 ที่รัฐบาลสหรัฐฯ ยืนยันต่อสาธารณะ" },
+    ],
   },
   "SAS": {
     slug: "british-sas",
@@ -178,41 +194,53 @@ const detailed = {
     personnel: "Not publicly confirmed",
     environment: ["Desert", "Urban", "Mountain", "Global"],
     logoUrl: commons("UK SAS (badge).svg", 500),
-    history: { summary: "Special Air Service เริ่มต้นในสงครามโลกครั้งที่สองจากแนวคิดหน่วยขนาดเล็กที่โจมตีลึกหลังแนวข้าศึก ต่อมาพัฒนาเป็นต้นแบบสำคัญของหน่วยรบพิเศษสมัยใหม่ ครอบคลุมการลาดตระเวนเชิงยุทธศาสตร์ การต่อต้านการก่อการร้าย และการสนับสนุนกำลังพันธมิตร" },
+    reviewedOn: "2026-07-12",
+    history: { summary: "Special Air Service ก่อตั้งในเดือนกรกฎาคม ค.ศ. 1941 ที่แอฟริกาเหนือ ในชื่อแรกว่า 'L Detachment, Special Air Service Brigade' โดยเดวิด สเตอร์ลิง ซึ่งรวบรวมกำลังชุดแรกจากหน่วยคอมมานโด แนวคิดของหน่วยคือการใช้กำลังขนาดเล็กโจมตีลึกหลังแนวข้าศึก โดยเฉพาะการจู่โจมสนามบินและฐานส่งกำลังในสงครามทะเลทราย พิพิธภัณฑ์ National Army Museum ระบุว่าหน่วยทำลายอากาศยานฝ่ายอักษะได้มากกว่า 300 ลำ หน่วยได้รับสถานะระดับกรมในปี 1942 ปฏิบัติการต่อเนื่องในยุโรปจนสิ้นสงคราม ถูกยุบหลังสงครามก่อนจะฟื้นขึ้นใหม่ในปี 1947 ในรูปกำลังอาสาสมัคร (21 SAS) และจัดตั้งกำลังประจำการ 22 SAS ในปี 1952 หน่วยเป็นที่รู้จักทั่วโลกจากการเข้าคลี่คลายเหตุการณ์ยึดสถานทูตอิหร่านในกรุงลอนดอนเมื่อปี 1980 (Operation Nimrod) ปัจจุบันเป็นองค์ประกอบหลักของ United Kingdom Special Forces คติพจน์ประจำหน่วยคือ 'Who Dares Wins'" },
     equipment: {
       dataStatus: "publicly documented / period dependent",
-      primary: [weapon("L119A2 / C8 family", "5.56×45 mm carbine", "แพลตฟอร์มคาร์บินที่เชื่อมโยงกับ UK Special Forces ในข้อมูลสาธารณะ", "documented"), weapon("HK MP5 family", "9×19 mm submachine gun", "มีชื่อเสียงจากภารกิจต่อต้านการก่อการร้ายในอดีต ปัจจุบันไม่ควรถือว่าเป็นแพลตฟอร์มหลักทุกภารกิจ", "historical")],
-      sidearms: [weapon("Glock 17", "9×19 mm pistol", "ปืนพกประจำการของกองทัพสหราชอาณาจักรและเชื่อมโยงกับ UKSF", "documented"), weapon("SIG Sauer P226", "9×19 mm pistol", "มีความเกี่ยวข้องกับ UK special forces ในช่วงเวลาก่อนหน้า", "historical")],
+      primary: [weapon("L119A2 (Colt Canada C8) family", "5.56×45 mm carbine", "มีรายงานอย่างกว้างขวางในสื่อกลาโหมเฉพาะทางว่าเป็นคาร์บินของ UK Special Forces แต่บัญชีอาวุธของ UKSF ไม่ได้เปิดเผยอย่างเป็นทางการ", "reported"), weapon("Heckler & Koch MP5", "9×19 mm submachine gun", "เชื่อมโยงกับภาพจำการเข้าคลี่คลายเหตุยึดสถานทูตอิหร่านปี 1980 พิพิธภัณฑ์ CMSM จัดแสดง MP5 ของ SAS จากเหตุการณ์ดังกล่าว ปัจจุบันไม่ควรถือเป็นอาวุธหลักของทุกภารกิจ", "historical")],
+      sidearms: [weapon("Glock 17 (L131A1)", "9×19 mm pistol", "ปืนพกประจำการของกองทัพสหราชอาณาจักรตั้งแต่ปี 2013 แทนที่ Browning L9A1 (ยืนยันโดย GOV.UK) เป็นอาวุธประจำกายทั่วไป มิใช่ของ UKSF โดยเฉพาะ", "documented")],
       blades: [weapon("Fairbairn–Sykes fighting knife", "Historic fighting knife", "เป็นสัญลักษณ์และมรดกทางประวัติศาสตร์ ไม่ได้หมายความว่าเป็นมีดปฏิบัติการมาตรฐานปัจจุบัน", "historical")],
-      support: [weapon("Night vision, suppressors and breaching equipment", "Mission accessories", "การจัดชุดขึ้นกับบทบาทและภารกิจ", "documented")],
+      support: [weapon("Stun grenades, sledgehammers and frame charges", "Breaching / assault tools", "National Army Museum ระบุการใช้ระเบิดแสง ค้อนโจมตี และดินระเบิดกรอบในการเข้าคลี่คลายเหตุยึดสถานทูตอิหร่านปี 1980 การจัดชุดอุปกรณ์ขึ้นกับภารกิจ", "documented")],
     },
     uniform: { colors: ["Ranger green", "Coyote / tan", "Black for historic CT imagery"], patterns: ["Multi-Terrain Pattern", "Mission-specific camouflage"], headgear: ["High-cut ballistic helmet", "Boonie / patrol headgear", "Respiratory protection for CT"], armor: ["Modular plate carriers", "Load-bearing systems", "Low-visibility configurations"], note: "ภาพชุดดำและหน้ากากป้องกันแก๊สเป็นภาพจำทางประวัติศาสตร์ของงานต่อต้านการก่อการร้าย ไม่ใช่เครื่องแบบมาตรฐานสำหรับทุกภารกิจของ SAS" },
     gallery: [],
     timeline: [
-      { year: "1941", title: "Founded in North Africa", description: "เริ่มจากหน่วยจู่โจมขนาดเล็กในสงครามทะเลทราย" },
-      { year: "Post-war", title: "Re-formed and expanded", description: "พัฒนาบทบาทลาดตระเวน สงครามนอกแบบ และสนับสนุนพันธมิตร" },
-      { year: "1980", title: "Public CT profile", description: "เหตุการณ์สถานทูตอิหร่านทำให้ขีดความสามารถต่อต้านการก่อการร้ายเป็นที่รู้จักทั่วโลก" },
-      { year: "Today", title: "Global special forces role", description: "ยังคงเป็นองค์ประกอบสำคัญของ United Kingdom Special Forces" },
+      { year: "1941", title: "Founded in North Africa", description: "เดวิด สเตอร์ลิง ก่อตั้งในชื่อ L Detachment เพื่อจู่โจมลึกหลังแนวข้าศึกในสงครามทะเลทราย" },
+      { year: "1942–45", title: "Regimental status", description: "ได้สถานะระดับกรมในปี 1942 และปฏิบัติการทั่วยุโรปจนสิ้นสงคราม" },
+      { year: "1947–52", title: "Re-formed", description: "ฟื้นเป็นกำลังอาสาสมัคร 21 SAS ปี 1947 และจัดตั้งกำลังประจำการ 22 SAS ปี 1952" },
+      { year: "1980", title: "Iranian Embassy Siege", description: "การเข้าคลี่คลายเหตุยึดสถานทูตอิหร่าน (Operation Nimrod) ทำให้ขีดความสามารถต่อต้านการก่อการร้ายเป็นที่รู้จักทั่วโลก" },
     ],
     sources: [
-      { title: "National Army Museum — SAS historical context", note: "ใช้สำหรับประวัติการก่อตั้งและพัฒนาการในภาพรวม", url: "https://www.nam.ac.uk/explore/sas" },
-      { title: "Wikimedia Commons — UK SAS badge", note: "ไฟล์ตราสัญลักษณ์สำหรับงานต้นแบบ ต้องตรวจเงื่อนไขเครื่องหมายราชการแยกจากลิขสิทธิ์ไฟล์", url: "https://commons.wikimedia.org/wiki/File:UK_SAS_(badge).svg" },
+      { title: "Special Air Service", publisher: "National Army Museum", url: "https://www.nam.ac.uk/explore/sas", type: "academic", accessedAt: "2026-07-12", supports: ["history", "branch"], notes: "ยืนยันการก่อตั้งเดือนกรกฎาคม 1941 (L Detachment) การรวมเข้ากับกองทัพบก (22 SAS ปี 1952) และบทบาทปัจจุบัน" },
+      { title: "David Stirling: The Phantom Major", publisher: "National Army Museum", url: "https://www.nam.ac.uk/explore/david-stirling", type: "academic", accessedAt: "2026-07-12", supports: ["history"], notes: "ผู้ก่อตั้ง กำลังชุดแรก 67 นาย คติพจน์ 'Who Dares Wins' และการใช้รถจี๊ปจู่โจมสนามบิน" },
+      { title: "Iranian Embassy siege", publisher: "National Army Museum", url: "https://www.nam.ac.uk/explore/iranian-embassy-siege", type: "academic", accessedAt: "2026-07-12", supports: ["history", "uniform", "equipment"], notes: "เหตุการณ์ปี 1980 (Operation Nimrod) ชุดจู่โจมสีดำและหน้ากากกันแก๊ส และอุปกรณ์เจาะทำลาย (ระเบิดแสง ค้อน ดินระเบิดกรอบ)" },
+      { title: "Original SAS MP5 – Iranian Embassy Siege 1980", publisher: "Combined Military Services Museum", url: "https://cmsm.co.uk/original-sas-mp5-iranian-embassy-siege-1980", type: "academic", accessedAt: "2026-07-12", supports: ["equipment", "history"], notes: "พิพิธภัณฑ์อิสระที่จัดแสดง MP5 ของ SAS จากเหตุการณ์ปี 1980 สนับสนุนความเชื่อมโยงเชิงประวัติศาสตร์ของ MP5" },
+      { title: "New pistols for UK Armed Forces", publisher: "UK Ministry of Defence (GOV.UK)", url: "https://www.gov.uk/government/news/new-pistols-for-uk-armed-forces", type: "government", accessedAt: "2026-07-12", supports: ["equipment"], notes: "ประกาศทางการปี 2013 การนำ Glock 17 Gen4 (L131A1) เข้าประจำการแทน Browning L9A1" },
+      { title: "File:UK SAS (badge).svg", publisher: "Wikimedia Commons", url: "https://commons.wikimedia.org/wiki/File:UK_SAS_(badge).svg", type: "reference", accessedAt: "2026-07-12", supports: ["media"], notes: "ตราสัญลักษณ์มีดปีก 'Who Dares Wins' สถานะลิขสิทธิ์เป็นสาธารณสมบัติ (Crown Copyright หมดอายุ) แต่มีข้อจำกัดการใช้เครื่องหมายราชการ" },
     ],
   },
   "SBS": {
     slug: "british-sbs",
-    founded: "World War II lineage",
-    branch: "Royal Marines / United Kingdom Special Forces",
+    founded: "1940 lineage (SBS from 1987)",
+    branch: "Royal Navy — United Kingdom Special Forces",
     unitType: "Maritime special forces",
     status: "Active",
     personnel: "Not publicly confirmed",
     environment: ["Maritime", "Coastal", "Urban"],
-    history: { summary: "Special Boat Service เป็นองค์ประกอบทางทะเลของ United Kingdom Special Forces มีรากจากหน่วยเรือและการจู่โจมชายฝั่งในสงครามโลกครั้งที่สอง ปัจจุบันเน้นการแทรกซึมทางน้ำ การลาดตระเวนชายฝั่ง และภารกิจต่อต้านการก่อการร้ายทางทะเล" },
-    equipment: { dataStatus: "publicly reported / mission dependent", primary: [weapon("L119A2 / C8 family", "5.56×45 mm carbine", "แพลตฟอร์มที่เชื่อมโยงกับ UKSF", "documented")], sidearms: [weapon("Glock 17", "9×19 mm pistol", "แพลตฟอร์มปืนพกของกองทัพสหราชอาณาจักร", "documented")], blades: [weapon("Dive / utility knife", "Maritime tool", "ประเภทและรุ่นขึ้นกับภารกิจดำน้ำและงานทางทะเล", "reported")], support: [weapon("Closed-circuit diving systems", "Maritime insertion equipment", "อุปกรณ์สำคัญของภารกิจทางน้ำ แต่รายละเอียดรุ่นย่อยไม่เปิดเผย", "reported")] },
-    uniform: { colors: ["Ranger green", "Coyote", "Maritime black / dark neutral"], patterns: ["Multi-Terrain Pattern", "Maritime over-garments"], headgear: ["High-cut helmet", "Diving headgear"], armor: ["Maritime plate carrier", "Flotation-compatible load carriage"], note: "ชุดและอุปกรณ์ของ SBS เปลี่ยนอย่างมากระหว่างการดำน้ำ การขึ้นเรือ และภารกิจบนบก" },
+    reviewedOn: "2026-07-12",
+    history: { summary: "Special Boat Service มีจุดกำเนิดในสงครามโลกครั้งที่สอง เมื่อกัปตัน Roger Courtney จัดตั้งหน่วยเรือแคนูจู่โจมขนาดเล็กในปี 1940 ซึ่งเริ่มแรกใช้ชื่อ 'Folboat Section' และต่อมาเป็น No 1 Special Boat Section โดยใช้เรือแคนูผ้าใบพับได้ (folboats) ในภารกิจก่อวินาศกรรมชายฝั่งและการลาดตระเวนหาดยกพล ต้นปี 1943 มีการตั้ง Special Boat Squadron แยกจาก SAS ปฏิบัติการจู่โจมในทะเลอีเจียนและเมดิเตอร์เรเนียน หน่วยในช่วงสงครามถูกยุบในปี 1945 และบทบาทถูกรวมเข้ากับกำลังของ Royal Marines ในปี 1947 จากนั้นเปลี่ยนชื่อเป็น Special Boat Company (1951) และ Special Boat Squadron (1974) ก่อนจะได้ชื่อ Special Boat Service เมื่อวันที่ 28 กรกฎาคม 1987 พร้อมรับผิดชอบภารกิจต่อต้านการก่อการร้ายทางทะเล ปัจจุบันเป็นหน่วยรบพิเศษทางทะเลของ Royal Navy ที่นำภารกิจต่อต้านการก่อการร้ายทางทะเลของสหราชอาณาจักร" },
+    equipment: { dataStatus: "publicly documented / mission dependent", primary: [weapon("L119A2 (Colt Canada C8) family", "5.56×45 mm carbine", "มีรายงานในสื่อกลาโหมเฉพาะทางว่าเป็นคาร์บินของ UK Special Forces แต่ไม่ได้เปิดเผยเป็นบัญชีทางการ", "reported")], sidearms: [weapon("Glock 17 (L131A1)", "9×19 mm pistol", "ปืนพกประจำการของกองทัพสหราชอาณาจักรตั้งแต่ปี 2013 (ยืนยันโดย GOV.UK) เป็นอาวุธประจำกายทั่วไป มิใช่ของ UKSF โดยเฉพาะ", "documented")], blades: [weapon("Dive / utility knife", "Maritime tool", "ประเภทและรุ่นขึ้นกับภารกิจดำน้ำและงานทางทะเล", "reported")], support: [weapon("Rigid Inflatable Boats (RIBs) and swimmer-canoeist diving teams", "Maritime insertion", "National Army Museum ระบุว่า SBS ใช้เรือยางท้องแข็งและชุดนักทำลายใต้น้ำที่มีขีดความสามารถดำน้ำ", "documented"), weapon("Folboats (collapsible canoes)", "Historic insertion craft", "อุปกรณ์แทรกซึมทางน้ำยุคสงครามโลกครั้งที่สองตามข้อมูลของ National Army Museum", "historical")] },
+    uniform: { colors: ["Ranger green", "Coyote", "Maritime black / dark neutral"], patterns: ["Multi-Terrain Pattern", "Maritime over-garments"], headgear: ["High-cut helmet", "Diving headgear"], armor: ["Maritime plate carrier", "Flotation-compatible load carriage"], note: "รายละเอียดเครื่องแบบร่วมสมัยของ SBS ไม่ได้เปิดเผยเป็นทางการ รายการนี้เป็นข้อมูลที่มีการรายงานทั่วไป ชุดและอุปกรณ์เปลี่ยนอย่างมากระหว่างการดำน้ำ การขึ้นเรือ และภารกิจบนบก" },
     gallery: [],
-    timeline: [{year:"WWII",title:"Maritime raiding lineage",description:"มีรากจากหน่วยเรือขนาดเล็กและการจู่โจมชายฝั่ง"},{year:"Post-war",title:"Special boat capability",description:"พัฒนาการลาดตระเวนและการแทรกซึมทางน้ำ"},{year:"Modern era",title:"Maritime counter-terrorism",description:"ขยายบทบาทสู่การต่อต้านการก่อการร้ายและภารกิจร่วม"},{year:"Today",title:"UKSF maritime component",description:"ดำรงบทบาทหน่วยรบพิเศษทางทะเลของสหราชอาณาจักร"}],
-    sources: [{ title: "Royal Navy — Special Boat Service overview", note: "ข้อมูลสาธารณะเกี่ยวกับบทบาททางทะเลในภาพรวม", url: "https://www.royalnavy.mod.uk/organisation/units-and-squadrons/special-boat-service" }],
+    timeline: [{year:"1940",title:"Folboat Section formed",description:"กัปตัน Roger Courtney จัดตั้งหน่วยเรือแคนูจู่โจม (ต่อมาเป็น No 1 Special Boat Section)"},{year:"1943",title:"Special Boat Squadron",description:"ตั้งเป็นหน่วยแยกจาก SAS ปฏิบัติการในทะเลอีเจียนและเมดิเตอร์เรเนียน"},{year:"1951–74",title:"Post-war reorganization",description:"เปลี่ยนชื่อเป็น Special Boat Company (1951) และ Special Boat Squadron (1974)"},{year:"1987",title:"Renamed Special Boat Service",description:"เปลี่ยนชื่อเมื่อ 28 กรกฎาคม 1987 พร้อมรับภารกิจต่อต้านการก่อการร้ายทางทะเล"}],
+    sources: [
+      { title: "Special Boat Service", publisher: "National Army Museum", url: "https://www.nam.ac.uk/explore/special-boat", type: "academic", accessedAt: "2026-07-12", supports: ["history", "branch", "equipment"], notes: "ลำดับการเปลี่ยนชื่อ (1947/1951/1974/28 ก.ค. 1987) บทบาทต่อต้านการก่อการร้ายทางทะเลปัจจุบัน เรือยางท้องแข็งและขีดความสามารถดำน้ำ" },
+      { title: "Origins of the Special Forces", publisher: "National Army Museum", url: "https://www.nam.ac.uk/explore/special-forces-origins", type: "academic", accessedAt: "2026-07-12", supports: ["history"], notes: "จุดกำเนิดโดย Roger Courtney เรือ folboats และการปรับโครงสร้างช่วงสงคราม" },
+      { title: "Roger Courtney: SBS pioneer", publisher: "National Army Museum", url: "https://www.nam.ac.uk/explore/roger-courtney-sbs-pioneer", type: "academic", accessedAt: "2026-07-12", supports: ["history", "equipment"], notes: "ประวัติผู้ก่อตั้ง การฝึกที่ Isle of Arran และการใช้เรือแคนูพับได้" },
+      { title: "New pistols for UK Armed Forces", publisher: "UK Ministry of Defence (GOV.UK)", url: "https://www.gov.uk/government/news/new-pistols-for-uk-armed-forces", type: "government", accessedAt: "2026-07-12", supports: ["equipment"], notes: "ประกาศทางการปี 2013 การนำ Glock 17 Gen4 (L131A1) เข้าประจำการแทน Browning L9A1" },
+      { title: "UK Special Boat Service personnel raid ship after suspected hijacking", publisher: "Naval Technology", url: "https://www.naval-technology.com/news/uk-special-boat-service-personnel-raid-ship-after-suspected-hijacking/", type: "reputable-media", accessedAt: "2026-07-12", supports: ["branch", "equipment"], notes: "แหล่งข่าวอิสระ ระบุ SBS เป็นหน่วยรบพิเศษของ Royal Navy และการใช้เฮลิคอปเตอร์ Merlin/Wildcat ในการขึ้นเรือปี 2020" },
+    ],
   },
   "GIGN": {
     slug: "gign",
@@ -441,7 +469,19 @@ const builtUnits = rawUnits.map((raw, index) => {
       license: null,
     },
     emblem: emblemSrc
-      ? { src: emblemSrc, alt: `${raw.code} official emblem / insignia`, variant: "square", sourceUrl: null, license: null }
+      ? {
+          src: emblemSrc,
+          // A "parent-branch-insignia" emblem is not a confirmed unit-specific
+          // emblem; its alt/label must say so. Source/license stay as known.
+          kind: merged.emblemKind === "parent-branch-insignia" ? "parent-branch-insignia" : "official-emblem",
+          alt: merged.emblemKind === "parent-branch-insignia"
+            ? `${raw.code} — parent-branch insignia (${raw.branch}); not a confirmed unit-specific emblem`
+            : `${raw.code} official emblem / insignia`,
+          note: merged.emblemNote || null,
+          variant: "square",
+          sourceUrl: null,
+          license: null,
+        }
       : null,
     gallery: merged.gallery || [],
   };
