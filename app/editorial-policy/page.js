@@ -1,11 +1,11 @@
 import Link from "next/link";
 import PolicyPage from "@/components/PolicyPage";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Editorial Policy",
-  description:
-    "How Global SOF Index prioritizes sources, labels evidence confidence, handles corrections, and refuses to invent sources, licenses, equipment, or operational claims.",
-};
+const DESCRIPTION =
+  "How Global SOF Index prioritizes sources, labels evidence confidence, handles corrections, and refuses to invent sources, licenses, equipment, or operational claims.";
+
+export const metadata = pageMetadata({ title: "Editorial Policy", description: DESCRIPTION, path: "/editorial-policy" });
 
 const LAST_REVIEWED = "2026-07-12";
 
@@ -77,6 +77,8 @@ export default function EditorialPolicyPage() {
     <PolicyPage
       kicker="EDITORIAL STANDARD"
       title="Editorial Policy"
+      path="/editorial-policy"
+      description={DESCRIPTION}
       lastReviewed={LAST_REVIEWED}
       intro={<p>How Global SOF Index sources, labels, and corrects the information it publishes.</p>}
       sections={sections}

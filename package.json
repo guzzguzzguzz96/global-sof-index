@@ -7,9 +7,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "media:audit": "node scripts/audit-media.js"
+    "media:audit": "node scripts/audit-media.js",
+    "seo:audit": "node scripts/audit-seo.js"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "flag-icons": "^7.5.0",
     "lucide-react": "^1.24.0",
     "next": "16.2.10",

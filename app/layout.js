@@ -1,13 +1,57 @@
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { siteConfig } from "@/lib/siteConfig";
 import "flag-icons/css/flag-icons.min.css";
 import "./globals.css";
 
 export const metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Global SOF Index",
-    template: "%s | Global SOF Index",
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
   },
-  description:
-    "ฐานข้อมูลเชิงภาพสำหรับสำรวจหน่วยปฏิบัติการพิเศษทั่วโลก พร้อม Tier, ภารกิจ และรายละเอียดจากข้อมูลสาธารณะ",
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  keywords: [
+    "special forces",
+    "special operations forces",
+    "SOF",
+    "military units",
+    "elite units",
+    "intelligence archive",
+    "military history",
+    "tactical units",
+  ],
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    siteName: siteConfig.name,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    locale: siteConfig.locale,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -21,7 +65,11 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+        <SpeedInsights />
+      </body>
     </html>
   );
 }
