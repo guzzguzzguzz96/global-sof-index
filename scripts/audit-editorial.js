@@ -39,6 +39,10 @@ const metric = {
   invalidCompleteness: [],
   featuredBelowRich: [],
   basicMissingMinimum: [],
+  contentSources: 0,
+  mediaSources: 0,
+  richLowContent: [],
+  mediaNoProvenance: [],
 };
 
 for (const unit of units) {
@@ -90,6 +94,24 @@ for (const unit of units) {
   if (editorial.completeness === COMPLETENESS.RICH) metric.rich++;
   else if (editorial.completeness === COMPLETENESS.BASIC) metric.basic++;
   else metric.researchPending++;
+
+  // ----- Content vs media-provenance source classification -----
+  const contentCount = editorial.contentSourceCount ?? sources.length;
+  const mediaCount = editorial.mediaSourceCount ?? 0;
+  metric.contentSources += contentCount;
+  metric.mediaSources += mediaCount;
+  // A rich dossier must rest on >= 2 content sources (media-only sources excluded).
+  if (editorial.completeness === COMPLETENESS.RICH && contentCount < 2) {
+    metric.richLowContent.push(`${label}: ${contentCount} content source${contentCount === 1 ? "" : "s"}`);
+  }
+  // Media records that carry no provenance (neither a source URL nor a license).
+  const cover = (unit.media && unit.media.cover) || {};
+  const emblem = (unit.media && unit.media.emblem) || {};
+  const hasMedia = Boolean(cover.src) || Boolean(emblem.src);
+  const hasProvenance =
+    Boolean(cover.src && (cover.sourceUrl || cover.license)) ||
+    Boolean(emblem.src && (emblem.sourceUrl || emblem.license));
+  if (hasMedia && !hasProvenance) metric.mediaNoProvenance.push(label);
 
   // ----- Editorial gaps (WARNINGS) -----
   if (!unit.founded || isPlaceholder(unit.founded)) metric.missingFounded.push(label);
@@ -161,6 +183,18 @@ console.log(`    placeholder phrases     ${pad(metric.placeholders.length)}`);
 console.log(`    invalid completeness    ${pad(metric.invalidCompleteness.length)}`);
 console.log(`    invalid reliability     ${pad(metric.invalidReliability.length)}`);
 console.log(`    basic missing minimum   ${pad(metric.basicMissingMinimum.length)}`);
+
+console.log("");
+console.log("  Sources — content vs media provenance");
+console.log(`    content sources         ${pad(metric.contentSources)}`);
+console.log(`    media provenance srcs   ${pad(metric.mediaSources)}`);
+console.log(`    rich w/ <2 content src  ${pad(metric.richLowContent.length)}`);
+console.log(`    media lacking provenance ${pad(metric.mediaNoProvenance.length)}`);
+
+if (metric.richLowContent.length) {
+  console.log("\n  Rich dossiers with fewer than two content sources:");
+  console.log("    " + metric.richLowContent.join("\n    "));
+}
 
 console.log("\n  Featured dossiers below rich:");
 console.log(metric.featuredBelowRich.length ? "    " + metric.featuredBelowRich.join("\n    ") : "    none");

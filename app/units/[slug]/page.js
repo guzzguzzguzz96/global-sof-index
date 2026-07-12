@@ -10,6 +10,7 @@ import EditorialStatus from "@/components/EditorialStatus";
 import SourceList from "@/components/SourceList";
 import UniformColorSwatch from "@/components/UniformColorSwatch";
 import CamouflagePatternSwatch from "@/components/CamouflagePatternSwatch";
+import MediaAttribution from "@/components/MediaAttribution";
 import { getUnitBySlug, getRelatedUnits, units } from "@/data/units";
 import { siteConfig } from "@/lib/siteConfig";
 import { DEFAULT_OG_IMAGE, DEFAULT_TWITTER_IMAGE } from "@/lib/seo";
@@ -139,6 +140,7 @@ export default async function UnitDetailPage({ params }) {
             />
           </div>
         </div>
+        {unit.coverImage ? <MediaAttribution media={unit.media?.cover} kind="photo" className="media-attr--hero" /> : null}
       </section>
 
       <nav className="dossier-nav">
@@ -213,6 +215,10 @@ export default async function UnitDetailPage({ params }) {
           <section className="intel-panel" id="media">
             <PanelHeading eyebrow="FILE 05" title="Visual Archive" meta={`${unit.gallery.length} MEDIA FILES`} />
             <MediaGallery images={unit.gallery} unitCode={unit.code} />
+            <div className="media-provenance">
+              <MediaAttribution media={unit.media?.cover} kind="photo" />
+              <MediaAttribution media={unit.media?.emblem} kind="emblem" />
+            </div>
           </section>
 
           <section className="intel-panel" id="sources">
