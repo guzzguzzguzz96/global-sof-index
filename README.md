@@ -34,6 +34,28 @@ npm run media:audit
 
 รายงานสถานะสื่อรายหน่วย (verified / official emblem / representative / research pending) และช่องว่างด้านแหล่งอ้างอิงกับลิขสิทธิ์ เป็นรายงานเชิงบรรณาธิการเท่านั้น ไม่กระทบผลการ build
 
+## Editorial audit
+
+```bash
+npm run editorial:audit
+```
+
+ตรวจสอบคุณภาพข้อมูลเชิงบรรณาธิการแบบออฟไลน์ แยก **technical errors** (exit 1) ออกจาก **editorial warnings** (exit 0)
+
+**Completeness levels** (`lib/editorial.js`) are derived from a unit's **content**, independently of its review date:
+
+- **rich** — verified identity, founded, branch, short history, primary role, mission tags, capability summary, and **≥ 2 sources**.
+- **basic** — verified identity, country, branch/parent organization, founded (or explicitly unknown), primary role, short history, and **≥ 1 source**.
+- **research-pending** — identity exists but one or more required basic fields are not yet verified. Missing claims render as an unknown / research-pending state and never as an invented placeholder fact.
+
+**Reliability classifications**: `verified` · `publicly-documented` · `commonly-reported` · `historical` · `research-pending`.
+
+**Last reviewed** (`editorial.lastReviewed`) represents a genuine, unit-by-unit factual and source review. It comes **only** from an explicit per-unit review date (`reviewedOn` on the unit), never from the generic legacy `updatedAt` (a migration/build date, kept only for the sitemap `lastModified`). Until an editor records a real review, `lastReviewed` stays `null` and the UI shows **"Editorial review pending"**; a machine-readable `<time dateTime="…">` is rendered only for real dates.
+
+**Source requirements**: each source is normalized to `{ title, publisher, url, type, accessedAt, supports, notes }`. URLs must be `http`/`https`; duplicate URLs within a unit are flagged; external links use `rel="noopener noreferrer"`. Publisher, type, access date, and supported categories are only shown when they exist — they are never invented.
+
+Editorial warnings (missing reviewed date, missing sources, placeholder phrases, incomplete dossiers) are reported but **do not currently block the build**. No source, date, branch, equipment, uniform, or operational claim is ever invented — unverified fields stay marked as research pending.
+
 ## SEO audit
 
 ```bash

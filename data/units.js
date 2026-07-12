@@ -1,3 +1,5 @@
+import { computeEditorial } from "../lib/editorial.js";
+
 const rawUnits = [
       {c:"North America", country:"United States", code:"DEVGRU", name:"Naval Special Warfare Development Group", tier:"S", role:"Maritime Counter Terror", tags:["Maritime","Counter Terror","Direct Action"], sel:98, multi:97, env:96},
       {c:"North America", country:"United States", code:"DELTA", name:"1st SFOD-D / Delta Force", tier:"S", role:"Hostage rescue and high-value target missions", tags:["Hostage Rescue","Counter Terror","Direct Action"], sel:98, multi:98, env:95},
@@ -443,6 +445,10 @@ const builtUnits = rawUnits.map((raw, index) => {
       : null,
     gallery: merged.gallery || [],
   };
+
+  // Computed editorial metadata (completeness, reliability, lastReviewed, ...).
+  // Backward compatible: detailLevel / updatedAt / contentNote are preserved.
+  merged.editorial = computeEditorial(merged);
   return merged;
 });
 
