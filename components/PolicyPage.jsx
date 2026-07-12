@@ -1,15 +1,41 @@
 import Link from "next/link";
 import SiteHeader from "./SiteHeader";
 import SiteFooter from "./SiteFooter";
+import JsonLd from "./JsonLd";
+import { siteConfig } from "@/lib/siteConfig";
 
 // Shared layout for the four policy / reference pages. Each page supplies a
 // `sections` array of { id, title, body } so the heading hierarchy, table of
 // contents, and accessible anchors stay consistent across all of them.
-export default function PolicyPage({ kicker, title, intro, lastReviewed, sections = [] }) {
+export default function PolicyPage({ kicker, title, intro, description, lastReviewed, path, sections = [] }) {
   const showToc = sections.length >= 3;
+  const canonicalUrl = path ? `${siteConfig.url}${path}` : null;
+
+  const jsonLd = canonicalUrl
+    ? [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: title,
+          description,
+          url: canonicalUrl,
+          isPartOf: { "@type": "WebSite", name: siteConfig.name, url: `${siteConfig.url}/` },
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: `${siteConfig.url}/` },
+            { "@type": "ListItem", position: 2, name: "Database", item: `${siteConfig.url}/#database` },
+            { "@type": "ListItem", position: 3, name: title, item: canonicalUrl },
+          ],
+        },
+      ]
+    : null;
 
   return (
     <main className="site-shell policy-shell">
+      {jsonLd ? <JsonLd data={jsonLd} /> : null}
       <SiteHeader />
 
       <nav className="policy-breadcrumb" aria-label="Breadcrumb">

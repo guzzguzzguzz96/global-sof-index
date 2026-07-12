@@ -1,10 +1,33 @@
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import JsonLd from "@/components/JsonLd";
 import UnitExplorer from "@/components/UnitExplorer";
 import FeaturedDossiers from "@/components/FeaturedDossiers";
 import CoverageMatrix from "@/components/CoverageMatrix";
 import { units, getFeaturedUnits } from "@/data/units";
+import { siteConfig } from "@/lib/siteConfig";
+
+const HOME_DESCRIPTION =
+  "Browse 60 special operations units across six continents. Filter by tier and mission and open public-source dossiers with editorial capability assessments — an open-source intelligence archive.";
+
+export const metadata = {
+  description: HOME_DESCRIPTION,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: siteConfig.name,
+    title: siteConfig.name,
+    description: HOME_DESCRIPTION,
+    url: `${siteConfig.url}/`,
+    locale: siteConfig.locale,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: HOME_DESCRIPTION,
+  },
+};
 
 export default function HomePage() {
   const featured = getFeaturedUnits();
@@ -13,8 +36,27 @@ export default function HomePage() {
     return acc;
   }, {});
 
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: siteConfig.name,
+      url: `${siteConfig.url}/`,
+      description: siteConfig.description,
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: `${siteConfig.name} — Unit Database`,
+      url: `${siteConfig.url}/`,
+      description: HOME_DESCRIPTION,
+      numberOfItems: siteConfig.unitCount,
+    },
+  ];
+
   return (
     <main className="site-shell">
+      <JsonLd data={jsonLd} />
       <SiteHeader />
 
       <section className="home-hero">

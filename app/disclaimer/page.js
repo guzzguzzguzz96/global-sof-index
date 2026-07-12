@@ -1,11 +1,11 @@
 import Link from "next/link";
 import PolicyPage from "@/components/PolicyPage";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Disclaimer",
-  description:
-    "Global SOF Index is an independent, educational, open-source reference archive with no affiliation to any military, police, government, or security organization.",
-};
+const DESCRIPTION =
+  "Global SOF Index is an independent, educational, open-source reference archive with no affiliation to any military, police, government, or security organization.";
+
+export const metadata = pageMetadata({ title: "Disclaimer", description: DESCRIPTION, path: "/disclaimer" });
 
 const LAST_REVIEWED = "2026-07-12";
 
@@ -92,6 +92,8 @@ export default function DisclaimerPage() {
     <PolicyPage
       kicker="LEGAL & REFERENCE"
       title="Disclaimer"
+      path="/disclaimer"
+      description={DESCRIPTION}
       lastReviewed={LAST_REVIEWED}
       intro={<p>This disclaimer applies to the entire Global SOF Index archive.</p>}
       sections={sections}

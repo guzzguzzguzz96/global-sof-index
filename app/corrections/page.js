@@ -1,10 +1,10 @@
 import PolicyPage from "@/components/PolicyPage";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Corrections",
-  description:
-    "How to request a correction to a Global SOF Index unit profile: what to include, the editorial review process, and where to send it.",
-};
+const DESCRIPTION =
+  "How to request a correction to a Global SOF Index unit profile: what to include, the editorial review process, and where to send it.";
+
+export const metadata = pageMetadata({ title: "Corrections", description: DESCRIPTION, path: "/corrections" });
 
 const LAST_REVIEWED = "2026-07-12";
 const CONTACT_EMAIL = "globalsofindex@gmail.com";
@@ -81,6 +81,8 @@ export default function CorrectionsPage() {
     <PolicyPage
       kicker="ACCURACY & REVIEW"
       title="Corrections"
+      path="/corrections"
+      description={DESCRIPTION}
       lastReviewed={LAST_REVIEWED}
       intro={
         <p>

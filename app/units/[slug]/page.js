@@ -2,22 +2,64 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import JsonLd from "@/components/JsonLd";
 import CapabilityRadar from "@/components/CapabilityRadar";
 import MediaGallery from "@/components/MediaGallery";
 import UnitCard from "@/components/UnitCard";
 import { getUnitBySlug, getRelatedUnits, units } from "@/data/units";
+import { siteConfig } from "@/lib/siteConfig";
+import { DEFAULT_OG_IMAGE, DEFAULT_TWITTER_IMAGE } from "@/lib/seo";
 
 export function generateStaticParams() {
   return units.map((unit) => ({ slug: unit.slug }));
+}
+
+// Titles and descriptions are derived only from existing unit data.
+function unitTitle(unit) {
+  return `${unit.code} — ${unit.name}`;
+}
+function unitDescription(unit) {
+  const tags = unit.tags.slice(0, 3).join(", ");
+  const dossier = unit.detailLevel === "expanded" ? "Full dossier" : "Basic dossier";
+  return `${unit.name} (${unit.code}) — ${unit.country} special operations unit. Role: ${unit.role}. Mission focus: ${tags}. ${dossier} in the Global SOF Index open-source archive.`;
 }
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const unit = getUnitBySlug(slug);
   if (!unit) return { title: "Unit not found" };
+
+  const title = unitTitle(unit);
+  const description = unitDescription(unit);
+  const canonicalPath = `/units/${unit.slug}`;
+  const canonicalUrl = `${siteConfig.url}${canonicalPath}`;
+
+  // Use the unit cover only when it is confirmed (verified) media; otherwise fall
+  // back to the default brand Open Graph / Twitter image.
+  const cover = unit.media?.cover;
+  const useCover = cover?.status === "verified" && cover?.src;
+  const ogImages = useCover ? [{ url: cover.src, alt: cover.alt || title }] : [DEFAULT_OG_IMAGE];
+  const twImages = useCover ? [{ url: cover.src, alt: cover.alt || title }] : [DEFAULT_TWITTER_IMAGE];
+
   return {
-    title: `${unit.code} — ${unit.name}`,
-    description: unit.history.summary,
+    title,
+    description,
+    alternates: { canonical: canonicalPath },
+    openGraph: {
+      type: "article",
+      siteName: siteConfig.name,
+      title,
+      description,
+      url: canonicalUrl,
+      locale: siteConfig.locale,
+      images: ogImages,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: twImages,
+    },
   };
 }
 
@@ -27,8 +69,33 @@ export default async function UnitDetailPage({ params }) {
   if (!unit) notFound();
   const related = getRelatedUnits(unit, 3);
 
+  const canonicalUrl = `${siteConfig.url}/units/${unit.slug}`;
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: unitTitle(unit),
+      description: unitDescription(unit),
+      url: canonicalUrl,
+      isPartOf: {
+        "@type": "WebSite",
+        name: siteConfig.name,
+        url: `${siteConfig.url}/`,
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Database", item: `${siteConfig.url}/#database` },
+        { "@type": "ListItem", position: 2, name: unitTitle(unit), item: canonicalUrl },
+      ],
+    },
+  ];
+
   return (
     <main className="site-shell detail-site">
+      <JsonLd data={jsonLd} />
       <SiteHeader />
 
       <section className="detail-hero">

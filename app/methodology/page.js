@@ -1,11 +1,11 @@
 import Link from "next/link";
 import PolicyPage from "@/components/PolicyPage";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Methodology",
-  description:
-    "How Global SOF Index selects units, models tiers and capability scores, classifies evidence, and verifies media — an editorial analytical model, not an official ranking.",
-};
+const DESCRIPTION =
+  "How Global SOF Index selects units, models tiers and capability scores, classifies evidence, and verifies media — an editorial analytical model, not an official ranking.";
+
+export const metadata = pageMetadata({ title: "Methodology", description: DESCRIPTION, path: "/methodology" });
 
 const LAST_REVIEWED = "2026-07-12";
 
@@ -193,6 +193,8 @@ export default function MethodologyPage() {
     <PolicyPage
       kicker="EDITORIAL FRAMEWORK"
       title="Methodology"
+      path="/methodology"
+      description={DESCRIPTION}
       lastReviewed={LAST_REVIEWED}
       intro={
         <p>
