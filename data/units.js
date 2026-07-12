@@ -539,6 +539,91 @@ const detailedCountryByCode = {
   NZSAS: "New Zealand",
 };
 
+// -------------------- Minimum (Basic) Dossiers --------------------
+// Researched minimum dossiers keyed by composite identity `${country}::${code}`
+// (codes such as SBS/GIS are not globally unique, so a bare code must never be
+// used as an identity here). These are intentionally NOT expanded/featured
+// dossiers: they are merged over the generic fallback but below any `detailed`
+// expanded override, and they never set detailLevel "expanded" — so they stay
+// out of getFeaturedUnits() and the featured-rich count.
+//
+// Each entry carries only the researched minimum: official founded/formation
+// period, parent branch, a Thai short history, and exactly one strong content
+// source. Weapons, uniform, media and detailed timeline are deliberately left
+// at the research-pending fallback. `reviewedOn` is present only where the
+// identity, branch and source were confirmed against the record.
+const minimumDossiers = {
+  "United States::24 STS": {
+    founded: "1987 (redesignated 24th Special Tactics Squadron, 1992)",
+    branch: "United States Air Force — Air Force Special Operations Command (AFSOC)",
+    unitType: "Air Force special tactics squadron",
+    status: "Active",
+    reviewedOn: "2026-07-12",
+    history: { summary: "24th Special Tactics Squadron เป็นหน่วยของกองทัพอากาศสหรัฐฯ ภายใต้ Air Force Special Operations Command (AFSOC) สายเชื้อสายในบทบาทสงครามพิเศษสมัยใหม่เริ่มจากการจัดตั้งเป็น 1724th Combat Control Squadron เมื่อวันที่ 1 พฤษภาคม 1987 เปลี่ยนเป็น 1724th Special Tactics Squadron ในเดือนตุลาคม 1987 และได้รับการกำหนดใหม่เป็น 24th Special Tactics Squadron เมื่อวันที่ 31 มีนาคม 1992 บทบาทที่เปิดเผยต่อสาธารณะคือการเป็นกำลังภาคพื้นด้านสงครามพิเศษของกองทัพอากาศ ครอบคลุมงานควบคุมการรบ (combat control) การกู้ภัยทางยุทธวิธี (pararescue) การลาดตระเวนพิเศษ และการควบคุมอากาศยานส่วนหน้า โดยหน่วยทำหน้าที่เป็นองค์ประกอบของกองทัพอากาศให้กับ Joint Special Operations Command (JSOC) ในปี 2025 กองบิน 24th Special Operations Wing ซึ่งเคยเป็นหน่วยเหนือถูกปลดประจำการเมื่อวันที่ 16 พฤษภาคม 2025 พร้อมการปรับโครงสร้าง Air Force Special Tactics โดยหน่วยยังคงสังกัด AFSOC ทั้งนี้รายละเอียดกำลังพลและวิธีปฏิบัติจัดเป็นความลับ" },
+    sources: [
+      { title: "24 Special Tactics Squadron (AFSOC) — Fact Sheet", publisher: "Air Force Historical Research Agency", url: "https://www.dafhistory.af.mil/About-Us/Fact-Sheets/Display/Article/432747/24-special-tactics-squadron-afsoc/", type: "official", accessedAt: "2026-07-12", supports: ["identity", "history"], notes: "เอกสารข้อเท็จจริงทางการของ Air Force Historical Research Agency สนับสนุนตัวตนและสายเชื้อสายของหน่วย ช่วงการจัดตั้งปี 1987 และการกำหนดใหม่เป็น 24th Special Tactics Squadron ในปี 1992" },
+      { title: "Special Tactics Enterprise Transitions as 24 SOW Flag Furled", publisher: "Air Force Special Operations Command (AFSOC)", url: "https://www.afsoc.af.mil/News/Article-Display/Article/4193224/special-tactics-enterprise-transitions-as-24-sow-flag-furled/", type: "official", accessedAt: "2026-07-12", supports: ["history"], notes: "แหล่งข่าวทางการ AFSOC สนับสนุนการปรับโครงสร้าง Air Force Special Tactics และการปลดประจำการ 24th Special Operations Wing เมื่อ 16 พฤษภาคม 2025 (ไม่ได้ระบุสายการบังคับบัญชาโดยตรงของ 24th STS)" },
+    ],
+  },
+  "United States::GREEN BERETS": {
+    founded: "1952",
+    branch: "United States Army — 1st Special Forces Command (Airborne), USASOC",
+    unitType: "Army special forces (unconventional warfare)",
+    status: "Active",
+    reviewedOn: "2026-07-12",
+    history: { summary: "United States Army Special Forces หรือที่รู้จักในชื่อ Green Berets เป็นหน่วยรบพิเศษของกองทัพบกสหรัฐฯ ก่อตั้งในปี 1952 เมื่อมีการจัดตั้ง 10th Special Forces Group (Airborne) ที่ Fort Bragg รัฐนอร์ทแคโรไลนา ภายใต้การนำของพันเอก Aaron Bank โดยสืบทอดแนวคิดสงครามนอกแบบจากหน่วย Office of Strategic Services (OSS) ในสงครามโลกครั้งที่สอง หน่วยพัฒนาควบคู่กับ Psychological Warfare School ซึ่งต่อมาเป็น John F. Kennedy Special Warfare Center and School หมวกเบเรต์สีเขียวอันเป็นสัญลักษณ์ได้รับการรับรองอย่างเป็นทางการในสมัยประธานาธิบดี John F. Kennedy เมื่อปี 1961 ภารกิจหลักตามหลักนิยมที่เปิดเผยประกอบด้วยสงครามนอกแบบ (unconventional warfare) การป้องกันภายในให้ต่างประเทศ (foreign internal defense) การปฏิบัติการโดยตรง การต่อต้านการก่อการร้าย และการลาดตระเวนพิเศษ ปัจจุบันหน่วยขึ้นตรงต่อ 1st Special Forces Command (Airborne) ภายใต้ United States Army Special Operations Command (USASOC)" },
+    sources: [
+      { title: "U.S. Army Branch Birthdays — Special Forces", publisher: "U.S. Army Center of Military History", url: "https://history.army.mil/Research/Reference-Topics/Army-Birthdays/Branch-Birthday/", type: "official", accessedAt: "2026-07-12", supports: ["history"], notes: "ศูนย์ประวัติศาสตร์การทหารกองทัพบกสหรัฐฯ (CMH) สนับสนุนประวัติและช่วงการก่อตั้งของเหล่า Special Forces" },
+      { title: "1st Special Forces Command (Airborne)", publisher: "United States Army (army.mil)", url: "https://www.army.mil/1sfc", type: "official", accessedAt: "2026-07-12", supports: ["identity", "branch", "role"], notes: "หน้าทางการของกองทัพบกสหรัฐฯ ยืนยันตัวตน สังกัด (1st Special Forces Command ภายใต้ USASOC) และบทบาทของหน่วย Special Forces" },
+    ],
+  },
+  "United States::75 RGR": {
+    founded: "1974 (battalions); regiment established 1986",
+    branch: "United States Army — 75th Ranger Regiment, USASOC",
+    unitType: "Airborne light infantry / special operations raid force",
+    status: "Active",
+    reviewedOn: "2026-07-12",
+    history: { summary: "75th Ranger Regiment เป็นหน่วยจู่โจมทางยุทธการของกองทัพบกสหรัฐฯ ในเดือนมกราคม 1974 พลเอก Creighton Abrams เสนาธิการทหารบก สั่งการให้จัดตั้งกองพันเรนเจอร์ กองพันที่ 1 ได้รับการจัดตั้งและกระโดดร่มลงที่ Fort Stewart รัฐจอร์เจีย เมื่อวันที่ 1 กรกฎาคม 1974 ตามด้วยกองพันที่ 2 ที่ Fort Lewis รัฐวอชิงตัน เมื่อวันที่ 1 ตุลาคม 1974 ต่อมาในปี 1984 มีการจัดตั้งกองพันที่ 3 พร้อมกองบังคับการกรม และในปี 1986 จึงจัดตั้งเป็น 75th Ranger Regiment อย่างเป็นทางการ โดยรับสืบทอดเชื้อสายจากหน่วยเรนเจอร์และ Merrill's Marauders ในสงครามโลกครั้งที่สอง บทบาทที่เปิดเผยต่อสาธารณะเน้นการปฏิบัติการโดยตรงขนาดใหญ่ การเข้ายึดสนามบิน และการจู่โจมทางอากาศ ปัจจุบันหน่วยขึ้นตรงต่อ United States Army Special Operations Command (USASOC) คติพจน์ประจำหน่วยคือ 'Rangers Lead the Way' และ 'Sua Sponte'" },
+    sources: [
+      { title: "75th Ranger Regiment History", publisher: "U.S. Army Special Operations Command (soc.mil)", url: "https://www.soc.mil/rangers/history.html", type: "official", accessedAt: "2026-07-12", supports: ["identity", "history", "branch", "role"], notes: "หน้าประวัติทางการของ USASOC ยืนยันคำสั่งจัดตั้งปี 1974 การจัดตั้งกองพันที่ 1–3 การจัดตั้งกรมในปี 1986 และเชื้อสายจากเรนเจอร์สงครามโลกครั้งที่สอง" },
+    ],
+  },
+  "United States::MARSOC": {
+    founded: "2006 (MARSOC activated; regiment redesignated Marine Raider Regiment, 2015)",
+    branch: "United States Marine Corps — Marine Forces Special Operations Command (MARSOC), USSOCOM",
+    unitType: "Marine special operations regiment",
+    status: "Active",
+    reviewedOn: "2026-07-12",
+    history: { summary: "Marine Raider Regiment เป็นหน่วยรบหลักของ United States Marine Corps Forces Special Operations Command (MARSOC) ซึ่งเป็นส่วนสนับสนุนของนาวิกโยธินสหรัฐฯ ให้กับ United States Special Operations Command (USSOCOM) จุดเริ่มต้นมาจากการจัดตั้งหน่วยทดลอง MCSOCOM Detachment 1 ในปี 2003 ที่ปฏิบัติงานร่วมกับหน่วยปฏิบัติการพิเศษอื่น หลังพิสูจน์ขีดความสามารถ MARSOC จึงได้รับการจัดตั้งอย่างเป็นทางการเมื่อวันที่ 24 กุมภาพันธ์ 2006 ที่ Camp Lejeune รัฐนอร์ทแคโรไลนา โดยกำลังพลรุ่นแรกส่วนใหญ่มาจากกองร้อยลาดตระเวนกำลังรบที่ 1 และ 2 (Force Reconnaissance) ในปี 2014 หน่วยรองในสังกัดได้รับการเปลี่ยนชื่อเป็น Marine Raiders เพื่อฟื้นชื่อหน่วย Raider อันเป็นตำนานในสงครามโลกครั้งที่สอง และในปี 2015 กรมได้รับการกำหนดใหม่เป็น Marine Raider Regiment บทบาทที่เปิดเผยครอบคลุมการปฏิบัติการโดยตรง การลาดตระเวนพิเศษ และการป้องกันภายในให้ต่างประเทศ คติพจน์ประจำหน่วยคือ 'Spiritus Invictus'" },
+    sources: [
+      { title: "About MARSOC", publisher: "U.S. Marine Corps Forces Special Operations Command", url: "https://www.marsoc.marines.mil/about.aspx", type: "official", accessedAt: "2026-07-12", supports: ["identity", "history", "branch", "role"], notes: "เว็บไซต์ทางการของ MARSOC ยืนยันการจัดตั้งปี 2006 การเป็นส่วนของนาวิกโยธินใน USSOCOM และการใช้ชื่อ Marine Raiders" },
+    ],
+  },
+  "Canada::CSOR": {
+    founded: "13 August 2006",
+    branch: "Canadian Armed Forces — Canadian Special Operations Forces Command (CANSOFCOM)",
+    unitType: "Special operations regiment",
+    status: "Active",
+    reviewedOn: "2026-07-12",
+    history: { summary: "Canadian Special Operations Regiment (CSOR) เป็นหน่วยรบพิเศษของกองทัพแคนาดา จัดตั้งขึ้นเมื่อวันที่ 13 สิงหาคม 2006 ซึ่งเป็นส่วนหนึ่งของการปรับโครงสร้างครั้งใหญ่ที่นำไปสู่การก่อตั้ง Canadian Special Operations Forces Command (CANSOFCOM) เมื่อวันที่ 1 กุมภาพันธ์ 2006 หน่วยมีที่ตั้งหลักที่ Canadian Forces Base Petawawa รัฐออนแทรีโอ และมีผู้บังคับหน่วยเป็นนายทหารระดับพันโท ภารกิจที่เปิดเผยต่อสาธารณะคือการสร้างและใช้กำลังพลความพร้อมสูงเพื่อปฏิบัติการพิเศษเต็มรูปแบบทั้งในและต่างประเทศ ตามวัตถุประสงค์ที่ผู้บัญชาการทหารสูงสุด (Chief of the Defence Staff) กำหนด ครอบคลุมการปฏิบัติการโดยตรง การลาดตระเวนพิเศษ และการฝึกและให้คำปรึกษาแก่กำลังของประเทศพันธมิตร โดยหน่วยขึ้นตรงต่อ CANSOFCOM" },
+    sources: [
+      { title: "Canadian Special Operations Regiment", publisher: "Canadian Special Operations Forces Command (Canada.ca)", url: "https://www.canada.ca/en/special-operations-forces-command/corporate/organizational-structure/so-regiment.html", type: "official", accessedAt: "2026-07-12", supports: ["identity", "history", "branch", "role"], notes: "หน้าทางการของรัฐบาลแคนาดา ยืนยันการจัดตั้งปี 2006 การขึ้นตรงต่อ CANSOFCOM ที่ตั้ง CFB Petawawa และบทบาทปฏิบัติการพิเศษเต็มรูปแบบ" },
+    ],
+  },
+  "Mexico::FES": {
+    founded: "1 April 2001",
+    branch: "Secretaría de Marina — Armada de México",
+    unitType: "Naval special operations force",
+    status: "Active",
+    reviewedOn: "2026-07-12",
+    history: { summary: "Fuerzas Especiales (FES) เป็นหน่วยปฏิบัติการพิเศษของ Armada de México ภายใต้ Secretaría de Marina จัดตั้งขึ้นเมื่อวันที่ 1 เมษายน 2001 ตาม Acuerdo Secretarial No. 031 เพื่อพัฒนาขีดความสามารถปฏิบัติการพิเศษทางทะเลของกองทัพเรือเม็กซิโก บทบาทที่เปิดเผยต่อสาธารณะเน้นการปฏิบัติการพิเศษทางทะเลและสะเทินน้ำสะเทินบก รวมถึงการสนับสนุนภารกิจความมั่นคงและการปฏิบัติการเสี่ยงสูง เอกสารเผยแพร่ทางการของ Secretaría de Marina ในปี 2025 ยังระบุถึงการดำรงอยู่อย่างต่อเนื่องของหน่วยและการครบรอบการก่อตั้ง 24 ปีในปีดังกล่าว ทั้งนี้ต้องแยกหน่วยนี้ออกจากคำว่า Fuerzas Especiales ในความหมายทั่วไป และจากหน่วยรบพิเศษของกองทัพบกเม็กซิโก" },
+    sources: [
+      { title: "Comité de Información — respuesta oficial sobre la creación de las Fuerzas Especiales (Armada de México)", publisher: "Secretaría de Marina — Armada de México", url: "https://semar.gob.mx/transparencia/Comite%20de%20Informacion/1806.pdf", type: "official", accessedAt: "2026-07-12", supports: ["identity", "branch", "history"], notes: "คำตอบทางการของ SEMAR ยืนยันตัวตนของหน่วยในสังกัด Armada de México การก่อตั้งเมื่อ 1 เมษายน 2001 และ Acuerdo Secretarial No. 031" },
+      { title: "Publicación oficial de la Secretaría de Marina — Mayo 2025", publisher: "Secretaría de Marina — Armada de México", url: "https://www.gob.mx/cms/uploads/attachment/file/994154/MAYO_2025.pdf", type: "official", accessedAt: "2026-07-12", supports: ["identity", "history", "role"], notes: "สิ่งพิมพ์ทางการของ SEMAR ปี 2025 สนับสนุนตัวตนปัจจุบันของ Fuerzas Especiales การก่อตั้งในปี 2001 บทบาทปฏิบัติการพิเศษทางทะเล และการดำรงอยู่ต่อเนื่อง (ครบรอบ 24 ปีในปี 2025)" },
+    ],
+  },
+};
+
 const genericCapability = (unit) => ({
   cqb: unit.tags.includes("Urban") || unit.tags.includes("Counter Terror") ? 92 : 84,
   recon: unit.tags.includes("Recon") ? 95 : 84,
@@ -578,8 +663,13 @@ function slugify(value) {
 }
 
 const builtUnits = rawUnits.map((raw, index) => {
+  const unitKey = `${raw.country}::${raw.code}`;
   const hasExpandedDetail = detailedCountryByCode[raw.code] === raw.country;
+  const hasMinimumDossier = !hasExpandedDetail && Boolean(minimumDossiers[unitKey]);
   const override = hasExpandedDetail ? detailed[raw.code] : {};
+  // Expanded (featured) override takes precedence over a researched minimum
+  // dossier, which in turn takes precedence over the generic fallback.
+  const minimumOverride = hasMinimumDossier ? minimumDossiers[unitKey] : {};
   const base = genericDetail(raw);
   const countryCode = iso2[raw.country] || "";
   const flag = flags[raw.country] || "🏳️";
@@ -587,6 +677,7 @@ const builtUnits = rawUnits.map((raw, index) => {
     ...raw,
     id: `${raw.country}::${raw.code}`,
     ...base,
+    ...minimumOverride,
     ...override,
     continent: raw.c,
     flag,
@@ -602,10 +693,16 @@ const builtUnits = rawUnits.map((raw, index) => {
       { code: "02", title: raw.tags[1] || "Joint Operations", description: `รองรับภารกิจ ${raw.tags[1] || "ร่วมหลายหน่วยงาน"}` },
       { code: "03", title: raw.tags[2] || "Mission Adaptation", description: `ปรับชุดกำลังและอุปกรณ์ตาม ${raw.tags[2] || "บริบทภารกิจ"}` },
     ],
+    // detailLevel stays "basic" for minimum dossiers: only expanded/featured
+    // dossiers use "expanded", so minimum dossiers never enter getFeaturedUnits().
     detailLevel: hasExpandedDetail ? "expanded" : "basic",
-    updatedAt: hasExpandedDetail ? "2026-07-12" : "RESEARCH QUEUE",
+    updatedAt: hasExpandedDetail || hasMinimumDossier ? "2026-07-12" : "RESEARCH QUEUE",
+    // Three distinct content-note states: expanded rich dossier, researched
+    // minimum/basic dossier, and the research-pending fallback.
     contentNote: hasExpandedDetail
       ? "ข้อมูลอาวุธและเครื่องแบบเป็นการสรุปจากข้อมูลสาธารณะและอาจเปลี่ยนตามช่วงเวลา ไม่ควรถือเป็นบัญชีประจำการทางการ"
+      : hasMinimumDossier
+      ? "Minimum Dossier นี้ผ่านการตรวจสอบข้อมูลพื้นฐานและแหล่งอ้างอิงแล้ว ส่วนอาวุธ เครื่องแบบ และสื่อยังอยู่ในสถานะ Research Pending"
       : "Basic Dossier นี้มีข้อมูลระดับภาพรวมเท่านั้น รายละเอียดอาวุธ เครื่องแบบ และประวัติยังไม่ผ่านการตรวจสอบรายแหล่ง",
   };
 
