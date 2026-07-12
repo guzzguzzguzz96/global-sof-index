@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import CapabilityRadar from "@/components/CapabilityRadar";
 import MediaGallery from "@/components/MediaGallery";
 import UnitCard from "@/components/UnitCard";
@@ -182,7 +183,7 @@ export default async function UnitDetailPage({ params }) {
         <div className="unit-grid related-grid">{related.map((item) => <UnitCard key={item.slug} unit={item} />)}</div>
       </section>
 
-      <footer className="site-footer"><span>GLOBAL SOF INDEX / {unit.code}</span><span>OPEN-SOURCE REFERENCE DOSSIER</span></footer>
+      <SiteFooter />
     </main>
   );
 }

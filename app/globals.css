@@ -234,7 +234,19 @@ img { display: block; max-width: 100%; }
 .methodology-grid article > span { color: var(--green); font: 700 10px "Chakra Petch", sans-serif; letter-spacing: .06em; }
 .methodology-grid h3 { margin: 11px 0 7px; font: 700 15px "Chakra Petch", sans-serif; }
 .methodology-grid p { margin: 0; color: #b0bbc2; font-size: var(--font-card-body); line-height: 1.7; }
-.site-footer { display: flex; justify-content: space-between; gap: 20px; margin: 50px 0 15px; padding: 17px 4px 0; border-top: 1px solid var(--line); color: #74838e; font: 600 10px "Chakra Petch", sans-serif; letter-spacing: .08em; }
+.methodology-link { display: inline-block; margin-top: 12px; color: var(--green); font: 600 12px "Chakra Petch", sans-serif; letter-spacing: .04em; }
+.methodology-link:hover { text-decoration: underline; }
+.methodology-link:focus-visible { outline: 2px solid rgba(154,245,96,.5); outline-offset: 3px; border-radius: 4px; }
+
+.site-footer { margin: 60px 0 18px; padding: 26px 4px 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: 1.7fr 1fr; gap: 22px 40px; align-items: start; }
+.site-footer__brand strong { display: block; font: 700 15px "Chakra Petch", sans-serif; letter-spacing: .06em; color: var(--text); }
+.site-footer__brand > span { display: block; margin-top: 5px; color: #8fa0ab; font-size: 12px; }
+.site-footer__brand p { margin: 12px 0 0; max-width: 540px; color: #7d8c96; font-size: 12px; line-height: 1.7; }
+.site-footer__nav { display: flex; flex-wrap: wrap; align-content: start; gap: 10px 20px; }
+.site-footer__nav a { color: #9aa8b1; font: 600 12px "Chakra Petch", sans-serif; letter-spacing: .04em; border-radius: 6px; }
+.site-footer__nav a:hover { color: var(--green); }
+.site-footer__nav a:focus-visible { outline: 2px solid rgba(154,245,96,.5); outline-offset: 3px; }
+.site-footer__meta { grid-column: 1 / -1; padding-top: 16px; border-top: 1px solid var(--line); color: #66757f; font: 600 11px "Chakra Petch", sans-serif; letter-spacing: .06em; }
 
 /* Detail page */
 .detail-hero { min-height: 525px; margin-top: 16px; position: relative; overflow: hidden; isolation: isolate; border: 1px solid var(--line); border-radius: 31px; background: radial-gradient(circle at 78% 22%, rgba(154,245,96,.16), transparent 24%), linear-gradient(135deg,#172128,#080d10); box-shadow: var(--shadow); }
@@ -390,7 +402,7 @@ img { display: block; max-width: 100%; }
   .featured-grid, .unit-grid, .filter-panel, .methodology-grid { grid-template-columns: 1fr; }
   .legend-note { margin-left: 0; }
   .methodology-section { padding: 22px; }.methodology-section h2 { font-size: 27px; }
-  .site-footer { flex-direction: column; }
+  .site-footer { grid-template-columns: 1fr; gap: 20px; }
   .detail-hero-content { min-height: 600px; padding: 28px 20px; }.back-link { left: 20px; top: 22px; }
   .detail-identity { grid-template-columns: 78px 1fr; }.detail-emblem { width: 78px; height: 78px; border-radius: 19px; }.detail-identity h1 { font-size: 48px; }
   .capability-layout { grid-template-columns: 1fr; }.mission-grid, .equipment-grid, .uniform-grid, .fact-grid { grid-template-columns: 1fr; }
@@ -537,4 +549,53 @@ img { display: block; max-width: 100%; }
   .coverage__sweep { animation: none; opacity: .45; }
   .unit-card, .featured-card, .card-media-img, .pagination__btn { transition: none; }
   .unit-card:hover .card-media-img, .featured-card:hover .card-media-img { transform: none; }
+}
+
+/* ============================================================
+   Policy / reference pages (methodology, disclaimer,
+   editorial-policy, corrections)
+   ============================================================ */
+.policy-breadcrumb { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 18px; color: #74838e; font: 600 11px "Chakra Petch", sans-serif; letter-spacing: .05em; }
+.policy-breadcrumb a:hover { color: var(--green); }
+.policy-breadcrumb a:focus-visible { outline: 2px solid rgba(154,245,96,.5); outline-offset: 2px; border-radius: 4px; }
+.policy-breadcrumb [aria-current="page"] { color: #aeb9c0; }
+.policy-header { margin: 22px 0 26px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+.policy-header h1 { margin: 10px 0 0; font: 700 clamp(34px, 4.4vw, 52px) "Chakra Petch", sans-serif; letter-spacing: -.03em; }
+.policy-intro { margin-top: 14px; max-width: 760px; }
+.policy-intro p { margin: 0; color: #b6c2ca; font-size: var(--font-body); line-height: var(--line-paragraph); }
+.policy-reviewed { margin: 16px 0 0; color: #74838e; font: 600 11px "Chakra Petch", sans-serif; letter-spacing: .06em; }
+.policy-layout { display: grid; grid-template-columns: 220px minmax(0,1fr); gap: 44px; align-items: start; }
+.policy-layout--single { grid-template-columns: minmax(0,1fr); }
+.policy-toc { position: sticky; top: 96px; align-self: start; }
+.policy-toc__title { display: block; margin-bottom: 12px; color: var(--green); font: 700 10px "Chakra Petch", sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+.policy-toc ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; }
+.policy-toc a { display: block; padding: 4px 0 4px 13px; border-left: 1px solid var(--line); color: #8b9aa5; font-size: 13px; line-height: 1.4; }
+.policy-toc a:hover { color: var(--text); border-color: var(--green); }
+.policy-toc a:focus-visible { outline: 2px solid rgba(154,245,96,.5); outline-offset: 2px; }
+.policy-body { max-width: 840px; }
+.policy-section { scroll-margin-top: 100px; padding: 26px 0; border-top: 1px solid var(--line); }
+.policy-section:first-child { padding-top: 4px; border-top: 0; }
+.policy-section h2 { margin: 0 0 14px; font: 700 21px "Chakra Petch", sans-serif; letter-spacing: -.01em; }
+.policy-section p { margin: 0 0 13px; color: #b4c0c8; font-size: var(--font-paragraph); line-height: var(--line-paragraph); }
+.policy-section p:last-child { margin-bottom: 0; }
+.policy-section ul, .policy-section ol { margin: 0 0 13px; padding-left: 20px; color: #b4c0c8; font-size: var(--font-paragraph); line-height: 1.7; }
+.policy-section li { margin: 6px 0; }
+.policy-section li::marker { color: #647581; }
+.policy-section strong { color: #dbe5e1; }
+.policy-section a { color: var(--green); }
+.policy-section a:hover { text-decoration: underline; }
+.policy-section a:focus-visible { outline: 2px solid rgba(154,245,96,.5); outline-offset: 2px; border-radius: 4px; }
+.policy-dl { margin: 0 0 13px; display: grid; gap: 10px; }
+.policy-dl > div { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; background: rgba(255,255,255,.014); }
+.policy-dl dt { color: var(--green); font: 700 11px "Chakra Petch", sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+.policy-dl dd { margin: 6px 0 0; color: #aeb9c1; font-size: 13px; line-height: 1.6; }
+.policy-callout { margin: 0 0 13px; border: 1px solid rgba(154,245,96,.2); border-left: 3px solid var(--green); border-radius: 10px; padding: 13px 15px; background: rgba(154,245,96,.045); color: #c6d3c1; font-size: var(--font-card-body); line-height: 1.65; }
+.policy-callout strong { color: #e5efdd; }
+.policy-mailto { display: inline-block; padding: 8px 13px; border: 1px solid rgba(154,245,96,.28); border-radius: 10px; background: rgba(154,245,96,.05); color: var(--green); font: 600 14px "Chakra Petch", sans-serif; letter-spacing: .02em; }
+.policy-mailto:hover { background: rgba(154,245,96,.1); text-decoration: none; }
+
+@media (max-width: 880px) {
+  .policy-layout { grid-template-columns: minmax(0,1fr); gap: 22px; }
+  .policy-toc { position: static; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+  .policy-toc ol { grid-auto-flow: row; }
 }

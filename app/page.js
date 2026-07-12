@@ -1,4 +1,6 @@
+import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import UnitExplorer from "@/components/UnitExplorer";
 import FeaturedDossiers from "@/components/FeaturedDossiers";
 import CoverageMatrix from "@/components/CoverageMatrix";
@@ -53,6 +55,7 @@ export default function HomePage() {
         <div>
           <span className="section-kicker">EDITORIAL STANDARD</span>
           <h2>ข้อมูลที่ชัดเจนกว่าความรู้สึกว่า “หน่วยนี้ใช้ของอะไร”</h2>
+          <Link href="/methodology" className="methodology-link">อ่าน Methodology ฉบับเต็ม →</Link>
         </div>
         <div className="methodology-grid">
           <Method number="01" title="VERIFIED" text="ข้อมูลจากหน่วยงานรัฐ เอกสารทางการ หรือภาพที่ระบุหน่วยและบริบทได้" />
@@ -62,10 +65,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <footer className="site-footer">
-        <span>GLOBAL SOF INDEX / DEVELOPMENT BUILD 0.1</span>
-        <span>FOR EDUCATIONAL & OPEN-SOURCE REFERENCE</span>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

@@ -33,8 +33,8 @@ export default function SiteHeader() {
 
       <nav className="header-nav" aria-label="Primary navigation">
         <Link href="/#database">DATABASE</Link>
-        <Link href="/#methodology">METHODOLOGY</Link>
-        <span className="system-status"><i /> SYSTEM ONLINE</span>
+        <Link href="/methodology">METHODOLOGY</Link>
+        <span className="system-status"><i /> ARCHIVE ONLINE</span>
       </nav>
     </header>
   );
