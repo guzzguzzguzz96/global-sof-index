@@ -547,11 +547,14 @@ const detailedCountryByCode = {
 // expanded override, and they never set detailLevel "expanded" — so they stay
 // out of getFeaturedUnits() and the featured-rich count.
 //
-// Each entry carries only the researched minimum: official founded/formation
-// period, parent branch, a Thai short history, and exactly one strong content
-// source. Weapons, uniform, media and detailed timeline are deliberately left
-// at the research-pending fallback. `reviewedOn` is present only where the
-// identity, branch and source were confirmed against the record.
+// Each entry carries the researched minimum: official founded/formation period,
+// parent branch, a Thai short history, and one or more valid content sources as
+// the evidence requires. A necessary source is never removed merely to force a
+// Basic classification, so editorial completeness may compute as Rich while
+// detailLevel stays "basic" (these entries are still never expanded/featured).
+// Weapons, uniform, media and detailed timeline are deliberately left at the
+// research-pending fallback. `reviewedOn` is present only where the identity,
+// branch and sources were confirmed against the record.
 const minimumDossiers = {
   "United States::24 STS": {
     founded: "1987 (redesignated 24th Special Tactics Squadron, 1992)",
@@ -620,6 +623,77 @@ const minimumDossiers = {
     sources: [
       { title: "Comité de Información — respuesta oficial sobre la creación de las Fuerzas Especiales (Armada de México)", publisher: "Secretaría de Marina — Armada de México", url: "https://semar.gob.mx/transparencia/Comite%20de%20Informacion/1806.pdf", type: "official", accessedAt: "2026-07-12", supports: ["identity", "branch", "history"], notes: "คำตอบทางการของ SEMAR ยืนยันตัวตนของหน่วยในสังกัด Armada de México การก่อตั้งเมื่อ 1 เมษายน 2001 และ Acuerdo Secretarial No. 031" },
       { title: "Publicación oficial de la Secretaría de Marina — Mayo 2025", publisher: "Secretaría de Marina — Armada de México", url: "https://www.gob.mx/cms/uploads/attachment/file/994154/MAYO_2025.pdf", type: "official", accessedAt: "2026-07-12", supports: ["identity", "history", "role"], notes: "สิ่งพิมพ์ทางการของ SEMAR ปี 2025 สนับสนุนตัวตนปัจจุบันของ Fuerzas Especiales การก่อตั้งในปี 2001 บทบาทปฏิบัติการพิเศษทางทะเล และการดำรงอยู่ต่อเนื่อง (ครบรอบ 24 ปีในปี 2025)" },
+    ],
+  },
+  "Germany::KSK": {
+    founded: "20 September 1996",
+    branch: "German Army (Heer) — Division Schnelle Kräfte (DSK)",
+    unitType: "Army special forces command",
+    status: "Active",
+    reviewedOn: "2026-07-13",
+    history: { summary: "Kommando Spezialkräfte (KSK) เป็นหน่วยรบพิเศษของกองทัพบกเยอรมนี (Heer) จัดตั้งเข้าประจำการอย่างเป็นทางการเมื่อวันที่ 20 กันยายน 1996 ที่ค่าย Graf-Zeppelin-Kaserne เมือง Calw รัฐบาเดิน-เวือร์ทเทิมแบร์ก ปัจจุบันหน่วยขึ้นตรงต่อ Division Schnelle Kräfte (DSK) ของกองทัพบก กำลังพลรุ่นแรกส่วนหนึ่งมาจากสายพลร่มคอมมานโดของกองทัพบก และการจัดตั้งได้รับอิทธิพลจากแบบอย่างหน่วยรบพิเศษต่างประเทศ บทบาทที่เปิดเผยต่อสาธารณะครอบคลุมการลาดตระเวนเชิงยุทธศาสตร์ การจัดการวิกฤตระหว่างประเทศ การช่วยเหลือและอพยพพลเมือง และการฝึกกำลังพันธมิตร ทั้งนี้ต้องแยก KSK ของกองทัพบกออกจาก Kommando Spezialkräfte der Marine (KSM) ของกองทัพเรือ ซึ่งเป็นคนละหน่วยกัน และรายละเอียดเชิงยุทธวิธีและกำลังพลไม่ได้เปิดเผยต่อสาธารณะ" },
+    sources: [
+      { title: "Kommando Spezialkräfte der Division Schnelle Kräfte", publisher: "Bundeswehr", url: "https://www.bundeswehr.de/de/organisation/heer/organisation/division-schnelle-kraefte/kommando-spezialkraefte", type: "official", accessedAt: "2026-07-13", supports: ["identity", "history", "branch", "role"], notes: "หน้าทางการของ Bundeswehr ยืนยันตัวตน การขึ้นตรงต่อ Heer/Division Schnelle Kräfte ที่ตั้ง Calw การเข้าประจำการเมื่อ 20 กันยายน 1996 และบทบาทของหน่วย" },
+    ],
+  },
+  "Germany::GSG 9": {
+    founded: "26 September 1972",
+    branch: "Bundespolizei (German Federal Police)",
+    unitType: "Federal police counter-terrorism unit",
+    status: "Active",
+    reviewedOn: "2026-07-13",
+    history: { summary: "GSG 9 der Bundespolizei เป็นหน่วยต่อต้านการก่อการร้ายของตำรวจสหพันธ์เยอรมนี (Bundespolizei) จัดตั้งเมื่อวันที่ 26 กันยายน 1972 ภายหลังเหตุการณ์สังหารหมู่ที่โอลิมปิกมิวนิกในปีเดียวกัน เดิมหน่วยสังกัด Bundesgrenzschutz (BGS หรือหน่วยพิทักษ์ชายแดนสหพันธ์) ซึ่งต่อมาเปลี่ยนชื่อเป็น Bundespolizei ในปี 2005 ชื่อย่อ GSG 9 มาจากคำเดิม 'Grenzschutzgruppe 9' แต่ชื่อทางการปัจจุบันคือ GSG 9 der Bundespolizei บทบาทที่เปิดเผยต่อสาธารณะครอบคลุมการต่อต้านการก่อการร้ายและการรับมืออาชญากรรมรุนแรงร้ายแรง หน่วยนี้เป็นหน่วยตำรวจสหพันธ์ มิใช่หน่วยทหารของ Bundeswehr และต้องแยกออกจากหน่วย SEK ของตำรวจระดับรัฐ ทั้งนี้รายละเอียดเชิงยุทธวิธีและกำลังพลไม่ได้เปิดเผยต่อสาธารณะ" },
+    sources: [
+      { title: "50 Jahre GSG 9 der Bundespolizei", publisher: "Bundesministerium des Innern und für Heimat (BMI)", url: "https://www.bmi.bund.de/SharedDocs/kurzmeldungen/DE/2022/09/50jahre-gsg9.html", type: "government", accessedAt: "2026-07-13", supports: ["identity", "history", "branch", "role"], notes: "หน้าทางการของกระทรวงมหาดไทยสหพันธ์ (BMI) เนื่องในวาระครบ 50 ปี ยืนยันชื่อ GSG 9 der Bundespolizei การก่อตั้ง 26 กันยายน 1972 การเป็นหน่วยพิเศษของ Bundespolizei และบทบาทต่อต้านการก่อการร้าย/อาชญากรรมรุนแรงร้ายแรง (การเข้าถึงอัตโนมัติถูกบล็อก HTTP 400 จึงยืนยันเนื้อหาผ่านการค้นคืนของเครื่องมือค้นหาและ de.wikipedia)" },
+      { title: "GSG 9 der Bundespolizei — Bundespolizeidirektion 11", publisher: "Bundespolizei", url: "https://bundespolizei.de/die-bundespolizei/organisation/bundespolizeidirektion-11/gsg-9", type: "official", accessedAt: "2026-07-13", supports: ["identity", "branch", "role"], notes: "หน้าองค์กรทางการของ Bundespolizei ระบุ GSG 9 เป็นหน่วยพิเศษภายใต้ Bundespolizeidirektion 11 และบทบาทต่อต้านการก่อการร้าย/อาชญากรรมร้ายแรง (ยืนยันเนื้อหาผ่านการค้นคืนของเครื่องมือค้นหา)" },
+      { title: "Die GSG 9 der Bundespolizei — Einblicke in die Spezialeinheit (Grenzgebiet 2/2022)", publisher: "Bundespolizei", url: "https://bundespolizei.de/fileadmin/user_upload/Downloads/Aktuelles/Unsere_Mitarbeiterzeitschrift/2_2022-die-gsg-9-der-bundespolizei-einblicke-in-die-spezialeinheit-grenzgebiet-_gesamtausgabe-einzelseiten.pdf", type: "official", accessedAt: "2026-07-13", supports: ["identity", "role"], notes: "สิ่งพิมพ์ทางการของ Bundespolizei ว่าด้วยหน่วย GSG 9 ไฟล์ PDF ไม่สามารถแยกข้อความอัตโนมัติได้ จึงใช้สนับสนุนเฉพาะตัวตนและบทบาท และไม่ใช่แหล่งเดียวที่สนับสนุนข้อเท็จจริงทุกฟิลด์" },
+    ],
+  },
+  "Italy::GIS": {
+    founded: "6 February 1978",
+    branch: "Arma dei Carabinieri — 2ª Brigata Mobile",
+    unitType: "Carabinieri special intervention group",
+    status: "Active",
+    reviewedOn: "2026-07-13",
+    history: { summary: "Gruppo di Intervento Speciale (GIS) เป็นหน่วยแทรกแซงพิเศษของ Arma dei Carabinieri จัดตั้งเมื่อวันที่ 6 กุมภาพันธ์ 1978 โดยกองบัญชาการทั่วไปของ Carabinieri ในช่วงภาวะฉุกเฉินจากการก่อการร้าย หน่วยตั้งฐานที่เมือง Livorno และจัดอยู่ในทางธุรการภายใต้ 2ª Brigata Mobile Carabinieri หน่วยมีลักษณะสองบทบาทอันเป็นเอกลักษณ์ คือบทบาทด้านการแทรกแซงพิเศษและต่อต้านการก่อการร้ายเพื่อสนับสนุนกระทรวงมหาดไทย (ในฐานะหน่วยแทรกแซงพิเศษตั้งแต่ปี 1984) และบทบาทด้านปฏิบัติการพิเศษของกระทรวงกลาโหมซึ่งผนวกเข้าตั้งแต่ปี 2004 ทั้งนี้ต้องแยก GIS ของ Carabinieri ออกจาก NOCS ของ Polizia di Stato ซึ่งเป็นคนละหน่วยกัน และรายละเอียดเชิงยุทธวิธีไม่ได้เปิดเผยต่อสาธารณะ" },
+    sources: [
+      { title: "Gruppo d'Intervento Speciale", publisher: "Arma dei Carabinieri", url: "https://www.carabinieri.it/chi-siamo/oggi/organizzazione/mobile-e-speciale/2-brigata-mobile/gruppo-d%27intervento-speciale", type: "official", accessedAt: "2026-07-13", supports: ["identity", "history", "branch", "role"], notes: "หน้าทางการของ Arma dei Carabinieri ยืนยันการจัดตั้ง 6 กุมภาพันธ์ 1978 การจัดอยู่ใน 2ª Brigata Mobile และสองบทบาท (ตำรวจแทรกแซงพิเศษ/กระทรวงมหาดไทย และปฏิบัติการพิเศษของกระทรวงกลาโหม)" },
+    ],
+  },
+  "Italy::COL MOSCHIN": {
+    founded: "Present regiment formed 1995 (elevated from battalion); lineage traces to the IX Reparto d'Assalto of 1918",
+    branch: "Italian Army (Esercito Italiano) — Comando delle Forze Speciali dell'Esercito (COMFOSE)",
+    unitType: "Army assault parachutist (incursori) regiment",
+    status: "Active",
+    reviewedOn: "2026-07-13",
+    history: { summary: "9° Reggimento d'Assalto Paracadutisti 'Col Moschin' เป็นหน่วยปฏิบัติการพิเศษ (incursori) ของกองทัพบกอิตาลี (Esercito Italiano) สายเชื้อสายของหน่วยย้อนกลับไปถึง IX Reparto d'Assalto ในสงครามโลกครั้งที่หนึ่งเมื่อปี 1918 ซึ่งเชื่อมโยงกับยุทธการที่ Col Moschin และประเพณีของหน่วย Arditi (fiamme nere) อย่างไรก็ตามหน่วยบรรพบุรุษนี้ไม่ควรถูกนับเป็นหน่วยเดียวกับกรมในโครงสร้างปัจจุบันโดยอัตโนมัติ หน่วยในรูปแบบปัจจุบันได้รับการยกฐานะจากระดับกองพันขึ้นเป็นกรมในปี 1995 ตามการปรับโครงสร้างกองทัพบกอิตาลี และนำตราสัญลักษณ์ fiamme nere กลับมาใช้ในปี 2006 ปัจจุบันกรมตั้งฐานที่เมือง Livorno และขึ้นตรงต่อ Comando delle Forze Speciali dell'Esercito (COMFOSE) บทบาทที่เปิดเผยครอบคลุมภารกิจปฏิบัติการพิเศษของกองทัพบก โดยรายละเอียดเชิงยุทธวิธีไม่ได้เปิดเผยต่อสาธารณะ" },
+    sources: [
+      { title: "9° Reggimento d'Assalto Paracadutisti 'Col Moschin' — La Storia", publisher: "Esercito Italiano (Ministero della Difesa)", url: "https://www.esercito.difesa.it/organizzazione/capo-di-sme/comfoter/comando-delle-forze-speciali-dell-esercito/9-reggimento-dassalto-paracadutisti-col-moschin/la-storia/122800.html", type: "official", accessedAt: "2026-07-13", supports: ["identity", "history", "branch", "role"], notes: "หน้าประวัติทางการของ Esercito Italiano สนับสนุนสายเชื้อสาย IX Reparto d'Assalto ปี 1918 การยกฐานะเป็นกรมในปี 1995 และการขึ้นตรงต่อ COMFOSE (การเข้าถึงอัตโนมัติติดปัญหาใบรับรอง TLS จึงตรวจยืนยันเนื้อหาผ่านการค้นคืนจากโดเมนทางการเดียวกันและ it.wikipedia)" },
+    ],
+  },
+  "Norway::FSK": {
+    founded: "Established in the early 1980s (predecessor Hærens Fallskjermjegerskole 1962; government decision 1979)",
+    branch: "Norwegian Armed Forces — Forsvarets spesialstyrker (Norwegian Special Operations Command)",
+    unitType: "Special operations command (Army-rooted)",
+    status: "Active",
+    reviewedOn: "2026-07-13",
+    history: { summary: "Forsvarets spesialkommando (FSK) เป็นหน่วยปฏิบัติการพิเศษของกองทัพนอร์เวย์ สายเชื้อสายของหน่วยย้อนกลับไปถึง Hærens Fallskjermjegerskole (โรงเรียนพลร่มจู่โจมของกองทัพบก) ซึ่งจัดตั้งเมื่อปี 1962 ที่ Trandum ต่อมาในปี 1979 รัฐบาลนอร์เวย์ตัดสินใจสร้างขีดความสามารถต่อต้านการก่อการร้าย ส่วนหนึ่งเพื่อรับมือภัยคุกคามต่อแท่นขุดเจาะน้ำมันในทะเลเหนือ และหน่วยในโครงสร้างปัจจุบันจัดตั้งขึ้นในช่วงต้นทศวรรษ 1980 โดยไม่ควรนับปี 1962 เป็นปีก่อตั้งของ FSK ปัจจุบันโดยอัตโนมัติ เดิมหน่วยอยู่ในความรับผิดชอบของกองทัพบก และต่อมาได้ย้ายมาอยู่ภายใต้ Forsvarets spesialstyrker (หน่วยบัญชาการปฏิบัติการพิเศษของกองทัพนอร์เวย์) ในการปรับโครงสร้างกำลังรบพิเศษเมื่อปี 2014 บทบาทที่เปิดเผยครอบคลุมการปฏิบัติการพิเศษและการสนับสนุนตำรวจในภารกิจต่อต้านการก่อการร้าย ทั้งนี้ต้องแยก FSK ออกจาก Marinejegerkommandoen (MJK) ซึ่งเป็นคนละหน่วยกัน" },
+    sources: [
+      { title: "Forsvarets spesialkommando (FSK)", publisher: "Forsvaret (Norwegian Armed Forces)", url: "https://www.forsvaret.no/om-forsvaret/organisasjon/forsvarets-spesialstyrker/forsvarets-spesialkommando-fsk", type: "official", accessedAt: "2026-07-13", supports: ["identity", "branch", "role", "history"], notes: "หน้าทางการของกองทัพนอร์เวย์ ยืนยันตัวตน การเป็นส่วนของ Forsvarets spesialstyrker บทบาทปัจจุบัน หน่วยบรรพบุรุษ Hærens Fallskjermjegerskole ปี 1962 และการตัดสินใจของรัฐบาลปี 1979 (ยืนยันเนื้อหาผ่าน WebFetch)" },
+      { title: "Prop. 151 S (2015–2016) — Kampkraft og bærekraft", publisher: "Regjeringen / Forsvarsdepartementet (Norwegian Government)", url: "https://www.regjeringen.no/no/dokumenter/prop.-151-s-20152016/id2504884/?ch=3", type: "government", accessedAt: "2026-07-13", supports: ["branch", "history"], notes: "เอกสารทางการของรัฐบาลนอร์เวย์ สนับสนุนการจัดวาง FSK ภายใต้ Forsvarets spesialstyrker (โครงสร้างกำลังรบพิเศษที่จัดตั้งในปี 2014) แทนการอ้างอิงจาก Wikipedia (การเข้าถึงอัตโนมัติถูกบล็อก HTTP 403 จึงยืนยันบริบทการปรับโครงสร้างปี 2014 ผ่านการค้นคืนของเครื่องมือค้นหา)" },
+    ],
+  },
+  "Sweden::SOG": {
+    founded: "Publicly announced in December 2010; formed through the planned SSG/SIG consolidation during 2011; established as a separate organisational unit on 1 January 2012",
+    branch: "Swedish Armed Forces (Försvarsmakten) — Försvarsmaktens specialförband, under Specialförbandsledningen",
+    unitType: "Joint special operations unit",
+    status: "Active",
+    reviewedOn: "2026-07-13",
+    history: { summary: "Särskilda operationsgruppen (SOG) เป็นหน่วยปฏิบัติการพิเศษหลักของกองทัพสวีเดน (Försvarsmakten) และเป็นส่วนหนึ่งของ Försvarsmaktens specialförband ตั้งฐานที่ Karlsborg ตามข้อมูลทางการของกองทัพสวีเดน SOG เป็นหน่วยหลักของกำลังรบพิเศษ อยู่ภายใต้การบังคับบัญชาของ Specialförbandsledningen (กองบัญชาการกำลังรบพิเศษ) พัฒนาการของหน่วยแบ่งได้เป็นสามช่วงที่ชัดเจน คือ (1) เดือนธันวาคม 2010 กองทัพสวีเดนประกาศต่อสาธารณะว่าจะรวมหน่วย Särskilda inhämtningsgruppen (SIG) และ Särskilda skyddsgruppen (SSG) เข้าด้วยกัน และใช้ชื่อรวมว่า Särskilda operationsgruppen (SOG) (2) การรวมหน่วยตามแผนดำเนินการในระหว่างปี 2011 และ (3) หน่วยได้รับการจัดตั้งเป็นหน่วยองค์กร (organisationsenhet) แยกต่างหากอย่างเป็นทางการตั้งแต่วันที่ 1 มกราคม 2012 ทั้งนี้เดือนธันวาคม 2010 เป็นเพียงการประกาศ มิใช่วันก่อตั้งที่เสร็จสมบูรณ์ บทบาทที่เปิดเผยต่อสาธารณะครอบคลุมการรบ การรวบรวมข่าวกรอง และการให้ความช่วยเหลือทางทหาร ต้องแยก SOG ออกจากระบบ Försvarsmaktens specialförband โดยรวมและจาก Specialförbandsledningen และรายละเอียดโครงสร้าง กำลังพล และยุทโธปกรณ์ไม่ได้เปิดเผยต่อสาธารณะ" },
+    sources: [
+      { title: "Särskilda operationsgruppen – SOG", publisher: "Försvarsmakten (Swedish Armed Forces)", url: "https://www.forsvarsmakten.se/en/about-the-swedish-armed-forces/organisation/joint-forces/special-operations-group/", type: "official", accessedAt: "2026-07-13", supports: ["identity", "branch", "role"], notes: "หน้าทางการของกองทัพสวีเดน ยืนยันตัวตน การเป็นหน่วยร่วม (gemensamma) หลักของกำลังรบพิเศษภายใต้ Specialförbandsledningen และบทบาทปัจจุบัน (ยืนยันเนื้อหาผ่าน WebFetch ไม่ได้ระบุปีก่อตั้ง)" },
+      { title: "Under ytan på specialförbanden", publisher: "Försvarsmakten (Swedish Armed Forces)", url: "https://www.forsvarsmakten.se/sv/aktuellt/2010/12/under-ytan-pa-specialforbanden/", type: "official", accessedAt: "2026-07-13", supports: ["history"], notes: "บทความทางการของกองทัพสวีเดน เผยแพร่เมื่อ 10 ธันวาคม 2010 ประกาศต่อสาธารณะว่าหน่วย Särskilda inhämtningsgruppen (SIG) และ Särskilda skyddsgruppen (SSG) จะรวมเข้าด้วยกันในระหว่างปี 2011 และหน่วยรวมจะใช้ชื่อ Särskilda operationsgruppen (SOG)" },
+      { title: "Budgetpropositionen — Utgiftsområde 6: Försvar och samhällets krisberedskap", publisher: "Government Offices of Sweden (Regeringskansliet)", url: "https://www.regeringen.se/contentassets/f764ba87c27347588b4f4bb51c412688/utgiftsomrade-6-forsvar-och-samhallets-krisberedskap/", type: "government", accessedAt: "2026-07-13", supports: ["history"], notes: "เอกสารงบประมาณทางการของรัฐบาลสวีเดน สนับสนุนว่า Försvarsmakten ได้จัดตั้ง Särskilda operationsgruppen เป็นหน่วยองค์กร (organisationsenhet) แยกต่างหากเมื่อวันที่ 1 มกราคม 2012" },
     ],
   },
 };
