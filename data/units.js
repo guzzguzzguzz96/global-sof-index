@@ -696,6 +696,77 @@ const minimumDossiers = {
       { title: "Budgetpropositionen — Utgiftsområde 6: Försvar och samhällets krisberedskap", publisher: "Government Offices of Sweden (Regeringskansliet)", url: "https://www.regeringen.se/contentassets/f764ba87c27347588b4f4bb51c412688/utgiftsomrade-6-forsvar-och-samhallets-krisberedskap/", type: "government", accessedAt: "2026-07-13", supports: ["history"], notes: "เอกสารงบประมาณทางการของรัฐบาลสวีเดน สนับสนุนว่า Försvarsmakten ได้จัดตั้ง Särskilda operationsgruppen เป็นหน่วยองค์กร (organisationsenhet) แยกต่างหากเมื่อวันที่ 1 มกราคม 2012" },
     ],
   },
+  "Russia::ALPHA": {
+    founded: "Group 'A' created by KGB order on 29 July 1974 (lineage); reorganised as Directorate 'A' within the FSB Special Purpose Center (from 1998)",
+    branch: "Federal Security Service (FSB) — Special Purpose Center (TsSN)",
+    unitType: "State security special-purpose unit",
+    status: "Active",
+    reviewedOn: "2026-07-13",
+    history: { summary: "หน่วยที่รู้จักในชื่อ 'Alpha' (Альфа) มีสายเชื้อสายย้อนกลับไปถึงกลุ่มปฏิบัติการพิเศษ Группа «А» ซึ่งจัดตั้งขึ้นตามคำสั่งของ KGB เมื่อวันที่ 29 กรกฎาคม 1974 ในบริบทหลังเหตุการณ์โจมตีโอลิมปิกมิวนิกปี 1972 เพื่อภารกิจต่อต้านการก่อการร้ายและการช่วยตัวประกัน ทั้งนี้ 'Alpha Group' เป็นชื่อสามัญที่ใช้กันทั่วไป มิใช่ชื่อทางการที่แน่นอนเสมอไป และหน่วยบรรพบุรุษยุค KGB ไม่ควรถูกนับเป็นองค์กรเดียวกับหน่วยปัจจุบันโดยอัตโนมัติ ภายหลังการปฏิรูปหน่วยงานความมั่นคงของรัสเซีย หน่วยได้กลายเป็น Управление «А» (Directorate 'A') ภายใต้ศูนย์ปฏิบัติการพิเศษ (Центр специального назначения; ЦСН) ของ Federal Security Service (FSB) ซึ่งจัดตั้งในปี 1998 บทบาทที่เปิดเผยต่อสาธารณะคือการต่อต้านการก่อการร้ายและการช่วยตัวประกัน โดยไม่รวมข้อกล่าวอ้างเกี่ยวกับปฏิบัติการ เป้าหมาย หรือความขัดแย้งปัจจุบัน และรายละเอียดโครงสร้างและกำลังพลไม่ได้เปิดเผยต่อสาธารณะ" },
+    sources: [
+      { title: "ФСБ России — материал о подразделении Группа «А» / Управление «А» ЦСН", publisher: "Federal Security Service of the Russian Federation (FSB)", url: "https://www.fsb.ru/fsb/comment/remark/single.htm%21id%3D10310588%40fsbComment.html", type: "official", accessedAt: "2026-07-13", supports: ["identity", "history", "branch", "role"], notes: "หน้าทางการของ FSB ว่าด้วยหน่วย Группа «А»/Управление «А» สนับสนุนตัวตน การก่อตั้งปี 1974 การสังกัด ЦСН ФСБ และบทบาทต่อต้านการก่อการร้าย (หน้า fsb.ru บล็อกการเข้าถึงอัตโนมัติ จึงไม่สามารถอ่านด้วยเครื่องได้ และยืนยันเนื้อหาผ่านการค้นคืนของเครื่องมือค้นหาเท่านั้น)" },
+    ],
+  },
+  "Russia::VYMPEL": {
+    founded: "Formed 19 August 1981 (KGB); later Directorate 'V' of the FSB Special Purpose Center (from 1998)",
+    branch: "Federal Security Service (FSB) — Special Purpose Center (TsSN)",
+    unitType: "State security special-purpose unit",
+    status: "Active",
+    reviewedOn: "2026-07-13",
+    history: { summary: "หน่วยที่รู้จักในชื่อ 'Vympel' (Вымпел แปลว่า ธง/ชายธง) จัดตั้งขึ้นเมื่อวันที่ 19 สิงหาคม 1981 ตามคำสั่งของประธาน KGB (Yuri Andropov) โดยเดิมอยู่ในสายงานข่าวกรองต่างประเทศของ KGB (First Chief Directorate) หลังการยุบเลิกสหภาพโซเวียต หน่วยผ่านการโอนย้ายสังกัดหลายครั้ง และในวันที่ 8 ตุลาคม 1998 ได้กลายเป็น Управление «В» (Directorate 'V') ภายใต้ศูนย์ปฏิบัติการพิเศษ (ЦСН) ของ Federal Security Service (FSB) หน่วยบรรพบุรุษยุคโซเวียตกับโครงสร้างปัจจุบันไม่ควรถูกนับเป็นองค์กรเดียวกันโดยอัตโนมัติ บทบาทที่หนังสือพิมพ์ทางการของรัฐบาลรัสเซีย (Rossiyskaya Gazeta) ระบุต่อสาธารณะเน้นการป้องกันการก่อการร้ายและการก่อวินาศกรรมต่อโครงสร้างพื้นฐานสำคัญ รวมถึงขีดความสามารถการดำน้ำและการส่งทางอากาศ ทั้งนี้ไม่ควรอนุมานภารกิจเชิงยุทธศาสตร์ในอดีตว่าเป็นภารกิจปัจจุบันโดยไม่มีแหล่งทางการรองรับ และรายละเอียดโครงสร้างและกำลังพลไม่ได้เปิดเผยต่อสาธารณะ" },
+    sources: [
+      { title: "Спецподразделение КГБ-ФСБ «Вымпел» отмечает 40-летний юбилей", publisher: "Rossiyskaya Gazeta (Russian Government daily)", url: "https://rg.ru/2021/08/17/specpodrazdelenie-kgb-fsb-vympel-otmechaet-40-letnij-iubilej.html", type: "government", accessedAt: "2026-07-13", supports: ["identity", "history", "branch", "role"], notes: "หนังสือพิมพ์ทางการของรัฐบาลรัสเซีย ยืนยันการก่อตั้ง 19 สิงหาคม 1981 (คำสั่ง KGB) การกลายเป็น Управление «В» ภายใต้ ЦСН ФСБ เมื่อ 8 ตุลาคม 1998 และบทบาทป้องกันการก่อการร้าย/การก่อวินาศกรรมต่อโครงสร้างพื้นฐาน (ยืนยันเนื้อหาผ่าน WebFetch)" },
+    ],
+  },
+  "India::PARA SF": {
+    founded: "No single founding date — collective family of Special Forces battalions within The Parachute Regiment",
+    branch: "Indian Army — The Parachute Regiment (Special Forces)",
+    unitType: "Army special forces battalions (collective)",
+    status: "Active",
+    reviewedOn: "2026-07-13",
+    history: { summary: "Para (Special Forces) หรือที่มักเรียกว่า Para SF เป็นชื่อสาธารณะเชิงรวมของกองพันหลายกองพันที่ทำหน้าที่ Special Forces ภายใต้ The Parachute Regiment ของกองทัพบกอินเดีย (Indian Army) มิใช่หน่วยเดี่ยวที่มีวันก่อตั้งเพียงวันเดียว แหล่งทางการที่เข้าถึงได้ยืนยันตัวตนปัจจุบันและโครงสร้าง คือการเป็นกองพัน Special Forces ภายใต้ The Parachute Regiment แต่ไม่ได้ระบุวันก่อตั้งเชิงรวมเพียงวันเดียวสำหรับ Para SF ทั้งกลุ่ม จึงไม่ควรนำวันก่อตั้งของกองพันใดกองพันหนึ่งมาใช้แทนทั้งกลุ่ม ปัจจุบันหน่วยเหล่านี้ใช้ชื่อทางการในรูปแบบ '[หมายเลข] Battalion, The Parachute Regiment (Special Forces)' บทบาทที่เปิดเผยต่อสาธารณะครอบคลุมการลาดตระเวนพิเศษ การปฏิบัติการโดยตรง และการฝึกร่วม ทั้งนี้ต้องแยก Para SF ออกจากหน่วยอื่น เช่น Special Frontier Force, MARCOS และ Garud Commando Force และรายละเอียดโครงสร้างและกำลังพลไม่ได้เปิดเผยต่อสาธารณะ" },
+    sources: [
+      { title: "Press Information Bureau — release on Para (Special Forces) / Parachute Regiment (Special Forces)", publisher: "Press Information Bureau, Government of India", url: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2107177", type: "government", accessedAt: "2026-07-13", supports: ["identity", "role"], notes: "ข่าวประชาสัมพันธ์ทางการของรัฐบาลอินเดีย ใช้คำเรียกทางการ Para (Special Forces)/Parachute Regiment (Special Forces) และบทบาทการฝึกร่วม/ปฏิบัติการพิเศษ (หน้า pib.gov.in บล็อกการเข้าถึงอัตโนมัติ HTTP 403 จึงยืนยันเนื้อหาผ่านการค้นคืนของเครื่องมือค้นหา)" },
+      { title: "Annual Report of the Ministry of Defence 2024–25", publisher: "Ministry of Defence, Government of India", url: "https://mod.gov.in/sites/default/files/Annual-Report-of-MoD-2024-25.pdf", type: "official", accessedAt: "2026-07-13", supports: ["identity", "branch"], notes: "รายงานประจำปีทางการของกระทรวงกลาโหมอินเดีย สนับสนุนการที่หน่วย Parachute Regiment (Special Forces) เป็นส่วนหนึ่งของกองทัพบกอินเดีย (ไฟล์ PDF ทางการ เข้าถึงอัตโนมัติไม่ได้ จึงยืนยันบริบทผ่านการค้นคืนของเครื่องมือค้นหา ไม่มีการอ้างวันก่อตั้งเชิงรวมของ Para SF)" },
+    ],
+  },
+  "Pakistan::SSG": {
+    founded: "Documented as active by 1965; exact establishment date not confirmed in the accessed official or institutional sources",
+    branch: "Pakistan Army — Special Services Group (SSG)",
+    unitType: "Army special operations / commando force",
+    status: "Active",
+    reviewedOn: "2026-07-13",
+    history: { summary: "Special Services Group (SSG) เป็นหน่วยคอมมานโดและกำลังรบพิเศษของกองทัพบกปากีสถาน (Pakistan Army) มีที่ตั้งหลักและโรงเรียนปฏิบัติการพิเศษ (Special Operations School) ที่ Cherat แคว้น Khyber-Pakhtunkhwa ชื่อทางการที่รัฐใช้ในปัจจุบันคือ 'Special Services Group' (พหูพจน์) ขณะที่ข้อมูล raw ของฐานข้อมูลและบางแหล่งใช้รูปเอกพจน์ 'Special Service Group' เอกสารประวัติศาสตร์การทหารของ National Defence University ปากีสถาน บันทึกการปรากฏตัวเชิงปฏิบัติการของกำลังพล Special Services Group ภายในปี 1965 อย่างไรก็ตามไม่พบการยืนยันวันจัดตั้งที่แน่นอนจากแหล่งทางการหรือสถาบันที่เข้าถึงได้ในการค้นคว้านี้ บทบาทที่เปิดเผยต่อสาธารณะครอบคลุมการต่อต้านการก่อการร้าย การช่วยตัวประกัน และการฝึกร่วมกับกองทัพมิตรประเทศ ทั้งนี้ต้องแยก SSG ของกองทัพบกออกจาก Special Service Group (Navy) หรือ SSG(N) และหน่วยของเหล่าทัพอื่น และรายละเอียดโครงสร้างและกำลังพลไม่ได้เปิดเผยต่อสาธารณะ" },
+    sources: [
+      { title: "Pakistan-Egypt joint exercise Thunder-II begins at Cherat", publisher: "Radio Pakistan (state broadcaster, ISPR-based)", url: "https://www.radio.gov.pk/06-04-2026/pakistan-egypt-joint-exercise-thunder-ii-begins-at-cherat", type: "government", accessedAt: "2026-07-13", supports: ["identity", "branch", "role"], notes: "รายงานสื่อรัฐปากีสถานอิงข้อมูล ISPR สนับสนุนตัวตน SSG ของกองทัพบกปากีสถาน บริบท Cherat/Special Operations School และบทบาทการฝึกร่วม/ต่อต้านการก่อการร้าย (ไม่สนับสนุนวันก่อตั้ง; หน้า radio.gov.pk บล็อกการเข้าถึงอัตโนมัติ HTTP 403 จึงยืนยันเนื้อหาผ่านการค้นคืนของเครื่องมือค้นหา)" },
+      { title: "Pak-India Wars 1965 & 1971", publisher: "National Defence University, Islamabad (ISSRA)", url: "https://ndu.edu.pk/issra/pub/books/Pak-India-Wars-1965%261971.pdf", type: "academic", accessedAt: "2026-07-13", supports: ["history"], notes: "สิ่งพิมพ์ประวัติศาสตร์การทหารของ National Defence University ปากีสถาน ใช้สนับสนุนข้อเท็จจริงแคบ ๆ เพียงว่ากำลังพล Special Services Group ของกองทัพบกปากีสถานปรากฏการปฏิบัติการภายในปี 1965 (ไฟล์ PDF; เข้าถึงอัตโนมัติไม่ได้ จึงยืนยันบริบทผ่านการค้นคืนของเครื่องมือค้นหา)" },
+    ],
+  },
+  "Japan::SFGp": {
+    founded: "Established in March 2004",
+    branch: "Japan Ground Self-Defense Force (JGSDF) — Ground Component Command",
+    unitType: "Ground Self-Defense Force special forces group",
+    status: "Active",
+    reviewedOn: "2026-07-13",
+    history: { summary: "特殊作戦群 (Special Forces Group; SFGp) เป็นหน่วยรบพิเศษของกองกำลังป้องกันตนเองภาคพื้นดินญี่ปุ่น (Japan Ground Self-Defense Force; JGSDF) จัดตั้งขึ้นใหม่ในเดือนมีนาคม 2004 หน่วยตั้งฐานที่ค่าย Narashino (習志野駐屯地) ร่วมกับกองพลน้อยส่งทางอากาศที่ 1 และปัจจุบันอยู่ภายใต้ Ground Component Command (陸上総隊) ชื่อภาษาอังกฤษทางการปัจจุบันของหน่วยคือ Special Forces Group (SFGp) บทบาทที่เปิดเผยต่อสาธารณะครอบคลุมการแทรกซึม การลาดตระเวน การช่วยตัวประกัน และการรับมือกองกำลังนอกแบบ รวมถึงการฝึกร่วมกับหน่วยพันธมิตร ทั้งนี้มีการเสนอแผนจัดตั้ง 'Special Operations Brigade' แต่ไม่ควรถือว่าแผนดังกล่าวมีผลบังคับใช้แล้วจนกว่าจะมีแหล่งทางการยืนยันการจัดตั้งจริง และรายละเอียดโครงสร้างและกำลังพลไม่ได้เปิดเผยต่อสาธารณะ" },
+    sources: [
+      { title: "JGSDF Special Forces Group — joint training (MOD news article, December 2025)", publisher: "Ministry of Defense of Japan / JGSDF", url: "https://www.mod.go.jp/en/article/2025/12/556e54b51b4a005759746cb6e005af5704c9f6a9.html", type: "official", accessedAt: "2026-07-13", supports: ["identity", "branch", "role"], notes: "หน้าทางการของกระทรวงกลาโหมญี่ปุ่น/JGSDF สนับสนุนตัวตนหน่วย 特殊作戦群 ชื่ออังกฤษปัจจุบัน Special Forces Group การสังกัด Ground Component Command และบทบาทการฝึกร่วม (หน้า mod.go.jp บล็อกการเข้าถึงอัตโนมัติ HTTP 403 จึงยืนยันเนื้อหาผ่านการค้นคืนของเครื่องมือค้นหา)" },
+      { title: "East Asian Strategic Review 2005 (chapter on Japan's defense reforms)", publisher: "National Institute for Defense Studies, Japan Ministry of Defense", url: "https://www.nids.mod.go.jp/publication/east-asian/pdf/east-asian_j2005_12.pdf", type: "official", accessedAt: "2026-07-13", supports: ["history"], notes: "สิ่งพิมพ์ของสถาบันวิจัยการป้องกันประเทศ (NIDS) กระทรวงกลาโหมญี่ปุ่น สนับสนุนข้อเท็จจริงว่า 特殊作戦群 จัดตั้งขึ้นใหม่ในเดือนมีนาคม 2004 (ไฟล์ PDF; เข้าถึงอัตโนมัติไม่ได้ จึงยืนยันบริบทผ่านการค้นคืนของเครื่องมือค้นหา)" },
+    ],
+  },
+  "South Korea::707 SMG": {
+    founded: "Current group-level identity documented by November 2019; the predecessor battalion designation was still used in a July 2019 government document",
+    branch: "Republic of Korea Army",
+    unitType: "Army counter-terrorism / special mission group",
+    status: "Active",
+    reviewedOn: "2026-07-13",
+    history: { summary: "707특수임무단 (707 Special Mission Group) เป็นหน่วยปฏิบัติการพิเศษของกองทัพบกสาธารณรัฐเกาหลี (Republic of Korea Army) เอกสารทางการของรัฐบาลเกาหลีใต้เมื่อเดือนกรกฎาคม 2019 ยังคงใช้ชื่อระดับกองพันว่า 707대테러 특수임무대대 (707 Counter-Terrorism Special Mission Battalion) ขณะที่หน้าทางการของรัฐบาลในเดือนพฤศจิกายน 2019 ใช้ชื่อระดับหน่วยต่อสาธารณะว่า 육군 707특수임무단 (Army 707 Special Mission Group) ดังนั้นตัวตนระดับกลุ่ม/หน่วยในปัจจุบันจึงมีการบันทึกอย่างชัดเจนภายในเดือนพฤศจิกายน 2019 โดยไม่ควรระบุเดือนที่แปลงสถานะอย่างเจาะจง และไม่ควรนับหน่วยระดับกองพันในอดีตกับหน่วยปัจจุบันเป็นรูปแบบองค์กรเดียวกันโดยอัตโนมัติ บทบาทที่เปิดเผยต่อสาธารณะคือการต่อต้านการก่อการร้ายระดับชาติ โดยรายละเอียดความพร้อมรบและโครงสร้างไม่ได้เปิดเผยต่อสาธารณะ" },
+    sources: [
+      { title: "정책브리핑 — 육군 707특수임무단 (November 2019)", publisher: "Government of the Republic of Korea (korea.kr)", url: "https://www.korea.kr/news/policyNewsView.do?newsId=148866681", type: "government", accessedAt: "2026-07-13", supports: ["identity", "history", "branch"], notes: "หน้าทางการของรัฐบาลเกาหลีใต้ (พฤศจิกายน 2019) ใช้ชื่อต่อสาธารณะว่า 육군 707특수임무단 (Army 707 Special Mission Group) สนับสนุนตัวตนระดับหน่วยปัจจุบันและการสังกัดกองทัพบก (หน้า korea.kr เข้าถึงอัตโนมัติไม่ได้ จึงยืนยันเนื้อหาผ่านการค้นคืนของเครื่องมือค้นหา)" },
+      { title: "정부 문서 (July 2019) — 707대테러 특수임무대대", publisher: "Government of the Republic of Korea (korea.kr)", url: "https://www.korea.kr/common/docViewer.do?fileId=197314987&tblKey=GMN", type: "government", accessedAt: "2026-07-13", supports: ["history"], notes: "เอกสารแผนของรัฐบาลเกาหลีใต้เดือนกรกฎาคม 2019 ยังคงใช้ชื่อระดับกองพัน 707대테러 특수임무대대 แสดงว่าการปรากฏชื่อระดับหน่วยเกิดขึ้นภายหลัง (ไฟล์เอกสาร; เข้าถึงอัตโนมัติไม่ได้)" },
+      { title: "정책브리핑 — 대테러 관련 발표 (707특수임무단)", publisher: "Government of the Republic of Korea (korea.kr)", url: "https://m.korea.kr/briefing/pressReleaseView.do?newsId=156633639&pWise=sub&pWiseSub=C8", type: "government", accessedAt: "2026-07-13", supports: ["role"], notes: "แหล่งข้อมูลทางการของรัฐบาลเกาหลีใต้ สนับสนุนบทบาทต่อต้านการก่อการร้ายของหน่วย (เข้าถึงอัตโนมัติไม่ได้ จึงยืนยันเนื้อหาผ่านการค้นคืนของเครื่องมือค้นหา)" },
+    ],
+  },
 };
 
 const genericCapability = (unit) => ({
