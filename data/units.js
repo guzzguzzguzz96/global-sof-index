@@ -767,6 +767,30 @@ const minimumDossiers = {
       { title: "정책브리핑 — 대테러 관련 발표 (707특수임무단)", publisher: "Government of the Republic of Korea (korea.kr)", url: "https://m.korea.kr/briefing/pressReleaseView.do?newsId=156633639&pWise=sub&pWiseSub=C8", type: "government", accessedAt: "2026-07-13", supports: ["role"], notes: "แหล่งข้อมูลทางการของรัฐบาลเกาหลีใต้ สนับสนุนบทบาทต่อต้านการก่อการร้ายของหน่วย (เข้าถึงอัตโนมัติไม่ได้ จึงยืนยันเนื้อหาผ่านการค้นคืนของเครื่องมือค้นหา)" },
     ],
   },
+  "South Africa::RECCES": {
+    founded: "Early-1970s lineage; the South African Special Forces Brigade officially commemorated 50 years of existence in 2023",
+    branch: "South African National Defence Force (SANDF) — reports to the Chief of Joint Operations",
+    unitType: "Special forces brigade",
+    status: "Active",
+    reviewedOn: "2026-07-14",
+    history: { summary: "South African Special Forces Brigade เป็นหน่วยปฏิบัติการพิเศษของกองทัพแอฟริกาใต้ ชื่อ 'Recces' เป็นชื่อเรียกทางประวัติศาสตร์และโดยทั่วไป (ย่อจาก reconnaissance) ส่วนชื่อทางการปัจจุบันคือ South African Special Forces Brigade สายเชื้อสายขององค์กรย้อนกลับไปถึงต้นทศวรรษ 1970 อย่างไรก็ตามไม่ควรนับหน่วยบรรพบุรุษในอดีตเป็นองค์กรเดียวกับ Brigade ปัจจุบันโดยอัตโนมัติ เอกสารทางการของกระทรวงกลาโหมแอฟริกาใต้ได้บันทึกการรำลึกครบรอบ 50 ปีของหน่วยในปี 2023 ปัจจุบันหน่วยเป็นส่วนหนึ่งของ South African National Defence Force (SANDF) และรายงานขึ้นตรงต่อ Chief of Joint Operations ตามที่บันทึกในเอกสารการกำกับดูแลของรัฐสภา บทบาทที่เปิดเผยต่อสาธารณะครอบคลุมการปฏิบัติการพิเศษและการลาดตระเวนพิเศษ โดยรายละเอียดโครงสร้างภายใน กำลังพล และที่ตั้งไม่ได้เปิดเผยต่อสาธารณะ" },
+    sources: [
+      { title: "Government Gazette — South African Special Forces Brigade (special-forces operator qualification)", publisher: "Government of South Africa (Government Gazette / gov.za)", url: "https://www.gov.za/sites/default/files/gcis_document/201409/26443d0.pdf", type: "government", accessedAt: "2026-07-14", supports: ["identity", "branch", "role"], notes: "เอกสารราชกิจจานุเบกษาของรัฐบาลแอฟริกาใต้ ยืนยันตัวตน South African Special Forces Brigade การสังกัด South African National Defence Force การเข้าร่วมปฏิบัติการกำลังรบพิเศษของ SANDF และบริบทขีดความสามารถ/คุณวุฒิผู้ปฏิบัติการพิเศษ (ไฟล์ PDF ทางการ; เข้าถึงอัตโนมัติไม่ได้ จึงยืนยันเนื้อหาผ่านการค้นคืนของเครื่องมือค้นหา)" },
+      { title: "Special Forces Brigade briefing to Parliament (2022)", publisher: "Parliament of the Republic of South Africa", url: "https://www.parliament.gov.za/storage/app/media/Docs/atc/2016406e-5de7-4b2f-9c7e-d993003ccecf.pdf", type: "government", accessedAt: "2026-07-14", supports: ["branch"], notes: "รายงานการกำกับดูแลของรัฐสภาแอฟริกาใต้ บันทึกการบรรยายสรุปของ Special Forces Brigade ในปี 2022 ซึ่งระบุว่า Brigade รายงานขึ้นตรงต่อ Chief of Joint Operations (ไฟล์ PDF ทางการ; เข้าถึงอัตโนมัติไม่ได้ จึงยืนยันเนื้อหาผ่านการค้นคืนของเครื่องมือค้นหา)" },
+      { title: "SA Soldier magazine, Vol 29 No 5 (2023)", publisher: "South African Department of Defence (dod.mil.za)", url: "https://www.dod.mil.za/publications/SA%20Solider%20Magazine/2023%20South%20African%20Soldier%20Magazines/Sold%20Vol%2029%20No%205%20net.pdf", type: "official", accessedAt: "2026-07-14", supports: ["identity", "history"], notes: "นิตยสารทางการของกระทรวงกลาโหมแอฟริกาใต้ (2023) สนับสนุนตัวตน South African Special Forces Brigade และบันทึกการรำลึกครบรอบ 50 ปีของหน่วยในปี 2023 โดยไม่ระบุวันก่อตั้งที่แน่นอน (ไฟล์ PDF; การเชื่อมต่ออัตโนมัติถูกปฏิเสธ ECONNREFUSED จึงยืนยันเนื้อหาผ่านการค้นคืนของเครื่องมือค้นหา)" },
+    ],
+  },
+  "Egypt::UNIT 999": {
+    founded: "Publicly documented in official Egyptian Ministry of Defence material by January 2020; exact formation date not disclosed in the accessed sources",
+    branch: "Egyptian Armed Forces",
+    unitType: "Military special operations unit",
+    status: "Active",
+    reviewedOn: "2026-07-14",
+    history: { summary: "หน่วยที่รู้จักในชื่อ Unit 999 มีชื่อทางการในภาษาอาหรับว่า الوحدة 999 قتال เป็นหน่วยปฏิบัติการพิเศษของกองทัพอียิปต์ (Egyptian Armed Forces) เอกสารทางการของกระทรวงกลาโหมอียิปต์ในการฝึก 'Qader 2020' บันทึกการปรากฏตัวของหน่วยต่อสาธารณะภายในเดือนมกราคม 2020 โดยแสดงขีดความสามารถด้านการปฏิบัติการพิเศษทางทหาร รวมถึงการแทรกซึมทางอากาศและทางทะเล (airborne and maritime insertion) ภายในบริบทการฝึกร่วมของกองทัพอียิปต์ ทั้งนี้เป็นการแสดงขีดความสามารถในการฝึกดังกล่าว มิใช่การระบุภารกิจประจำทั้งหมดของหน่วย ไม่พบการเปิดเผยวันที่จัดตั้งที่ชัดเจนในแหล่งที่เข้าถึงได้ จึงระบุเพียงว่าหน่วยมีการบันทึกอย่างเป็นทางการภายในปี 2020 และต้องแยก Unit 999 ออกจาก Unit 777 และจากหน่วย El-Sa'ka ในความหมายทั่วไป โดยไม่อนุมานสายการบังคับบัญชาจากหน้าการฝึกเพียงอย่างเดียว รายละเอียดโครงสร้าง กำลังพล ภารกิจต่างประเทศ หรือเป้าหมายไม่ได้นำมารวมไว้" },
+    sources: [
+      { title: "مناورة قادر 2020 — الوحدة 999 قتال (Qader 2020)", publisher: "Egyptian Ministry of Defence (mod.gov.eg)", url: "https://www.mod.gov.eg/ModWebSite/NewsDetailsAr.aspx?id=39132", type: "official", accessedAt: "2026-07-14", supports: ["identity", "history", "branch", "role"], notes: "หน้าทางการของกระทรวงกลาโหมอียิปต์ (การฝึก Qader 2020) ยืนยันชื่อทางการสาธารณะ الوحدة 999 قتال บริบทกองทัพอียิปต์/การฝึกกำลังรบพิเศษ การดำรงอยู่ที่บันทึกไว้ภายในเดือนมกราคม 2020 และการแสดงการแทรกซึมทางอากาศและทางทะเลในการฝึก Qader 2020 (หน้า mod.gov.eg ติดปัญหาใบรับรอง TLS ในการเข้าถึงอัตโนมัติ จึงยืนยันเนื้อหาผ่านการค้นคืนของเครื่องมือค้นหา; ไม่ยืนยันสายการบังคับบัญชา El-Sa'ka หรือวันก่อตั้ง)" },
+    ],
+  },
 };
 
 const genericCapability = (unit) => ({
