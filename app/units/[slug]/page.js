@@ -11,6 +11,7 @@ import SourceList from "@/components/SourceList";
 import UniformColorSwatch from "@/components/UniformColorSwatch";
 import CamouflagePatternSwatch from "@/components/CamouflagePatternSwatch";
 import MediaAttribution from "@/components/MediaAttribution";
+import CompareToggle from "@/components/compare/CompareToggle";
 import { getUnitBySlug, getRelatedUnits, units } from "@/data/units";
 import { siteConfig } from "@/lib/siteConfig";
 import { DEFAULT_OG_IMAGE, DEFAULT_TWITTER_IMAGE } from "@/lib/seo";
@@ -110,6 +111,11 @@ export default async function UnitDetailPage({ params }) {
         <div className="detail-cover-overlay" />
         <div className="detail-hero-content">
           <Link href="/#database" className="back-link">← BACK TO DATABASE</Link>
+          {/* Single compare action for this dossier; it shares the same
+              selection state as the unit cards and the dock. */}
+          <div className="detail-hero-compare">
+            <CompareToggle slug={unit.slug} code={unit.code} name={unit.name} variant="detail" />
+          </div>
           <div className="detail-identity">
             <div className="detail-emblem">
               {unit.logoUrl ? <img src={unit.logoUrl} alt={unit.media?.emblem?.alt || `ตราสัญลักษณ์ ${unit.code}`} /> : <span>{unit.code.slice(0, 4)}</span>}

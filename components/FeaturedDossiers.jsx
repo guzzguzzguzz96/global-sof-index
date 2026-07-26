@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import CardMedia from "./CardMedia";
 import CountryBadge from "./CountryBadge";
+import CompareToggle from "./compare/CompareToggle";
 import { MEDIA_LABELS, summarizeMedia } from "@/lib/media";
 
 export default function FeaturedDossiers({ units }) {
@@ -20,40 +21,47 @@ export default function FeaturedDossiers({ units }) {
           const { mode } = summarizeMedia(unit);
           const isPhoto = mode === "verified" || mode === "editorial" || mode === "representative";
           return (
-            <Link
-              href={`/units/${unit.slug}`}
+            // <article> wrapper so the compare control is a sibling of the
+            // navigation link rather than nested inside it.
+            <article
               className={`featured-card featured-card--${isPhoto ? "photo" : "dossier"} tier-${unit.tier.toLowerCase()}`}
               key={unit.id}
             >
-              <div className="featured-media">
-                <CardMedia
-                  cover={unit.media?.cover}
-                  emblem={unit.media?.emblem}
-                  code={unit.code}
-                  statusBadge={false}
-                  sizes="(max-width: 620px) 100vw, (max-width: 1120px) 50vw, 33vw"
-                />
-              </div>
-              <div className="featured-overlay" aria-hidden="true" />
-
-              <div className="featured-top">
-                <CountryBadge country={unit.countryInfo} size="sm" />
-                <b className={`featured-tier tier-square--${unit.tier.toLowerCase()}`} aria-hidden="true">{unit.tier}</b>
-              </div>
-
-              <div className="featured-bottom">
-                <h3>{unit.code}</h3>
-                <p>{unit.name}</p>
-                <div className="featured-meta">
-                  <span>{unit.continent}</span>
-                  <i aria-hidden="true" />
-                  <span>{unit.tags[0]}</span>
-                  <i aria-hidden="true" />
-                  <span className={`featured-meta__media media-dot--${mode}`}>{MEDIA_LABELS[mode]}</span>
+              <Link href={`/units/${unit.slug}`} className="featured-card__link">
+                <div className="featured-media">
+                  <CardMedia
+                    cover={unit.media?.cover}
+                    emblem={unit.media?.emblem}
+                    code={unit.code}
+                    statusBadge={false}
+                    sizes="(max-width: 620px) 100vw, (max-width: 1120px) 50vw, 33vw"
+                  />
                 </div>
-                <span className="featured-cta">OPEN INTELLIGENCE DOSSIER <ArrowRight size={13} strokeWidth={2.2} aria-hidden="true" /></span>
+                <div className="featured-overlay" aria-hidden="true" />
+
+                <div className="featured-top">
+                  <CountryBadge country={unit.countryInfo} size="sm" />
+                  <b className={`featured-tier tier-square--${unit.tier.toLowerCase()}`} aria-hidden="true">{unit.tier}</b>
+                </div>
+
+                <div className="featured-bottom">
+                  <h3>{unit.code}</h3>
+                  <p>{unit.name}</p>
+                  <div className="featured-meta">
+                    <span>{unit.continent}</span>
+                    <i aria-hidden="true" />
+                    <span>{unit.tags[0]}</span>
+                    <i aria-hidden="true" />
+                    <span className={`featured-meta__media media-dot--${mode}`}>{MEDIA_LABELS[mode]}</span>
+                  </div>
+                  <span className="featured-cta">OPEN INTELLIGENCE DOSSIER <ArrowRight size={13} strokeWidth={2.2} aria-hidden="true" /></span>
+                </div>
+              </Link>
+
+              <div className="featured-card__compare">
+                <CompareToggle slug={unit.slug} code={unit.code} name={unit.name} />
               </div>
-            </Link>
+            </article>
           );
         })}
       </div>
