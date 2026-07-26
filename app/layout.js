@@ -1,8 +1,17 @@
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import CompareProvider from "@/components/compare/CompareProvider";
+import CompareDock from "@/components/compare/CompareDock";
+import { units } from "@/data/units";
+import { toCompareRef } from "@/lib/compare";
 import { siteConfig } from "@/lib/siteConfig";
 import "flag-icons/css/flag-icons.min.css";
 import "./globals.css";
+
+// Identity-level unit index handed to the compare provider. Built here, in a
+// server component, so the client boundary receives only slug/code/name/country
+// strings — never dossier prose.
+const compareRefs = units.map(toCompareRef);
 
 export const metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -66,7 +75,13 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        {children}
+        {/* The layout itself stays a server component; CompareProvider is the
+            only client boundary, and it wraps the tree so the dock and every
+            compare toggle share one selection across navigation. */}
+        <CompareProvider refs={compareRefs}>
+          {children}
+          <CompareDock />
+        </CompareProvider>
         <Analytics />
         <SpeedInsights />
       </body>

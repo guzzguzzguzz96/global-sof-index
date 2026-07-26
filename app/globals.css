@@ -154,7 +154,13 @@ img { display: block; max-width: 100%; }
 .featured-card { position: relative; min-height: 340px; overflow: hidden; border: 1px solid var(--line); border-radius: 24px; background: var(--surface); box-shadow: 0 18px 55px rgba(0,0,0,.25); transition: transform .25s ease, border-color .25s ease; isolation: isolate; }
 .featured-card:hover { transform: translateY(-6px); border-color: rgba(154,245,96,.3); }
 .featured-card:hover .card-media-img { transform: scale(1.03); }
-.featured-card:focus-visible { outline: 2px solid rgba(154,245,96,.6); outline-offset: 3px; }
+/* The featured card is an <article>; this link covers it so the compare control
+   can sit alongside rather than inside it. No z-index, so the existing child
+   layering (media 0 / overlay 1 / top+bottom 2) is preserved unchanged. */
+.featured-card__link { position: absolute; inset: 0; display: block; color: inherit; border-radius: inherit; }
+.featured-card__link:focus-visible { outline: 2px solid rgba(154,245,96,.6); outline-offset: -3px; }
+/* Sits under the tier badge in the free right-hand gutter. */
+.featured-card__compare { position: absolute; z-index: 3; right: 15px; top: 60px; }
 .featured-media { position: absolute; inset: 0; z-index: 0; }
 .featured-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(0deg, rgba(3,6,8,.98), rgba(3,6,8,.6) 46%, rgba(3,6,8,.12)); pointer-events: none; }
 .featured-top { position: absolute; z-index: 2; inset: 15px 15px auto; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
@@ -200,7 +206,10 @@ img { display: block; max-width: 100%; }
 .unit-card { --accent: var(--green); position: relative; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); box-shadow: 0 14px 40px rgba(0,0,0,.28); transition: transform .2s ease, border-color .2s ease; }
 .unit-card.tier-a { --accent: var(--cyan); } .unit-card.tier-b { --accent: var(--amber); }
 .unit-card:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--accent) 30%, transparent); }
-.unit-card:focus-visible { outline: 2px solid #cdd8de; outline-offset: 2px; box-shadow: 0 0 0 4px rgba(154,245,96,.22); }
+/* The card is an <article>; the navigation link is the inner flex column, so
+   the focus ring is drawn inside it (the card clips overflow). */
+.unit-card__link { display: flex; flex: 1; flex-direction: column; color: inherit; border-radius: inherit; }
+.unit-card__link:focus-visible { outline: 2px solid #cdd8de; outline-offset: -3px; box-shadow: inset 0 0 0 5px rgba(154,245,96,.18); }
 .unit-card-media { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: linear-gradient(135deg,#141d24,#080d10); }
 .media-placeholder { width: 100%; height: 100%; display: grid; place-items: center; color: color-mix(in srgb, var(--accent) 20%, transparent); font: 800 54px "Chakra Petch", sans-serif; }
 .tier-square { position: absolute; right: 11px; top: 11px; z-index: 2; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 10px; color: #071009; background: var(--accent); box-shadow: 0 2px 8px rgba(0,0,0,.3); font: 800 15px "Chakra Petch", sans-serif; }
@@ -681,4 +690,196 @@ img { display: block; max-width: 100%; }
   .policy-layout { grid-template-columns: minmax(0,1fr); gap: 22px; }
   .policy-toc { position: static; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
   .policy-toc ol { grid-auto-flow: row; }
+}
+
+/* ============================================================
+   Compare mode (PR 4A) — selection toggle, dock, and the
+   /compare comparison matrix.
+   ============================================================ */
+
+/* Screen-reader-only helper (first use in this project). */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+/* ---------- Compare toggle ---------- */
+.compare-toggle {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 9px;
+  border: 1px solid rgba(255,255,255,.14); border-radius: 8px;
+  background: rgba(3,6,8,.74); color: #b7c3ca;
+  font: 700 9px "Chakra Petch", sans-serif; letter-spacing: .08em; text-transform: uppercase;
+  cursor: pointer;
+  transition: color .18s ease, border-color .18s ease, background-color .18s ease;
+}
+.compare-toggle:hover:not(:disabled) { color: var(--text); border-color: rgba(154,245,96,.5); background: rgba(154,245,96,.1); }
+.compare-toggle:focus-visible { outline: 2px solid rgba(154,245,96,.75); outline-offset: 2px; }
+/* Selected state changes icon, label and fill — never colour alone. */
+.compare-toggle.is-selected { color: #0a1206; border-color: var(--green); background: var(--green); }
+.compare-toggle.is-selected:hover:not(:disabled) { color: #0a1206; background: var(--green-dark); border-color: var(--green-dark); }
+.compare-toggle:disabled { opacity: .45; cursor: not-allowed; }
+.compare-toggle svg { flex: none; }
+
+/* Detail-page variant sits on the dossier hero and reads slightly larger. */
+.compare-toggle--detail { padding: 7px 12px; font-size: 10px; }
+
+/* Invisible box mirroring the media frame aspect ratio, so the control pins to
+   the free bottom-right corner of the cover without adding card height. */
+.unit-card__compare {
+  position: absolute; inset: 0 0 auto 0; aspect-ratio: 16 / 9; z-index: 3;
+  display: flex; align-items: flex-end; justify-content: flex-end; padding: 11px;
+  pointer-events: none;
+}
+.unit-card__compare > * { pointer-events: auto; }
+
+.detail-hero-compare { position: absolute; right: 40px; top: 26px; z-index: 3; }
+
+/* ---------- Compare dock ---------- */
+body[data-compare-dock="open"] { padding-bottom: 132px; }
+
+.compare-dock {
+  position: fixed; z-index: 60;
+  left: 50%; transform: translateX(-50%);
+  bottom: max(16px, env(safe-area-inset-bottom, 0px));
+  width: min(var(--content-max), calc(100% - 32px));
+  border: 1px solid var(--line-strong); border-radius: 18px;
+  background: rgba(9,14,18,.94);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 60px rgba(0,0,0,.55);
+}
+.compare-dock__inner { display: flex; align-items: center; gap: 14px; padding: 12px 14px; }
+.compare-dock__lead { display: flex; flex-direction: column; gap: 2px; flex: none; }
+.compare-dock__kicker { color: var(--green); font: 700 9px "Chakra Petch", sans-serif; letter-spacing: .14em; }
+.compare-dock__count { color: var(--text); font: 800 15px "Chakra Petch", sans-serif; letter-spacing: .02em; }
+
+.compare-dock__chips { flex: 1; min-width: 0; display: flex; gap: 8px; margin: 0; padding: 2px; list-style: none; overflow-x: auto; scrollbar-width: thin; }
+.compare-chip {
+  flex: none; display: inline-flex; align-items: center; gap: 7px;
+  padding: 5px 6px 5px 9px; border: 1px solid var(--line); border-radius: 10px;
+  background: var(--surface-2);
+}
+.compare-chip__flag { width: 16px; height: 12px; border-radius: 2px; flex: none; }
+.compare-chip__code { color: var(--text); font: 700 11px "Chakra Petch", sans-serif; letter-spacing: .04em; }
+.compare-chip__country { color: var(--muted); font-size: 11px; white-space: nowrap; }
+.compare-chip__remove {
+  display: inline-grid; place-items: center; width: 19px; height: 19px; flex: none;
+  border: 0; border-radius: 6px; background: transparent; color: var(--muted); cursor: pointer;
+}
+.compare-chip__remove:hover { color: var(--red); background: rgba(255,116,116,.12); }
+.compare-chip__remove:focus-visible { outline: 2px solid rgba(154,245,96,.75); outline-offset: 1px; }
+
+.compare-dock__actions { flex: none; display: flex; align-items: center; gap: 9px; }
+.compare-dock__clear {
+  display: inline-flex; align-items: center; gap: 5px; padding: 8px 11px;
+  border: 1px solid var(--line); border-radius: 10px; background: transparent; color: var(--muted);
+  font: 600 11px "Chakra Petch", sans-serif; letter-spacing: .05em; cursor: pointer;
+}
+.compare-dock__clear:hover { color: var(--text); border-color: var(--line-strong); }
+.compare-dock__clear:focus-visible { outline: 2px solid rgba(154,245,96,.75); outline-offset: 2px; }
+.compare-dock__go {
+  display: inline-flex; align-items: center; gap: 6px; padding: 9px 15px;
+  border: 1px solid var(--green); border-radius: 10px; background: var(--green); color: #0a1206;
+  font: 700 11px "Chakra Petch", sans-serif; letter-spacing: .06em; text-transform: uppercase; cursor: pointer;
+  white-space: nowrap;
+}
+.compare-dock__go:hover { background: var(--green-dark); border-color: var(--green-dark); }
+.compare-dock__go:focus-visible { outline: 2px solid #cdd8de; outline-offset: 2px; }
+.compare-dock__go:disabled { opacity: .4; cursor: not-allowed; background: transparent; color: var(--muted); border-color: var(--line); }
+.compare-dock__hint { margin: 0; padding: 0 14px 11px; color: var(--muted); font-size: 12px; }
+
+/* ---------- Compare page ---------- */
+.compare-page { margin-top: 22px; }
+.compare-page__header { padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.compare-page__header h1 { margin: 10px 0 0; font: 700 clamp(30px, 4vw, 46px) "Chakra Petch", sans-serif; letter-spacing: -.03em; }
+.compare-page__header > p { margin: 12px 0 0; max-width: 760px; color: #b6c2ca; font-size: var(--font-paragraph); line-height: var(--line-paragraph); }
+.compare-page__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 16px; }
+.compare-page__count { padding: 5px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--green); font: 700 10px "Chakra Petch", sans-serif; letter-spacing: .1em; }
+.compare-page__link { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font: 600 11px "Chakra Petch", sans-serif; letter-spacing: .06em; }
+.compare-page__link:hover { color: var(--text); }
+.compare-page__link:focus-visible { outline: 2px solid rgba(154,245,96,.6); outline-offset: 3px; border-radius: 5px; }
+.compare-page__footnote { margin: 18px 0 0; color: #7d8c96; font-size: 12px; line-height: 1.75; }
+
+.compare-empty {
+  margin: 30px 0; padding: 44px 24px; display: grid; justify-items: center; gap: 11px; text-align: center;
+  border: 1px dashed var(--line-strong); border-radius: 18px; background: rgba(255,255,255,.014); color: var(--muted);
+}
+.compare-empty svg { color: var(--green); }
+.compare-empty strong { color: var(--text); font: 700 16px "Chakra Petch", sans-serif; letter-spacing: .01em; }
+.compare-empty p { margin: 0; max-width: 520px; font-size: var(--font-card-body); line-height: 1.7; }
+.compare-empty__cta {
+  margin-top: 6px; padding: 9px 16px; border: 1px solid rgba(154,245,96,.4); border-radius: 10px;
+  background: rgba(154,245,96,.07); color: var(--green);
+  font: 700 11px "Chakra Petch", sans-serif; letter-spacing: .07em; text-transform: uppercase;
+}
+.compare-empty__cta:hover { background: rgba(154,245,96,.14); }
+.compare-empty__cta:focus-visible { outline: 2px solid rgba(154,245,96,.75); outline-offset: 2px; }
+
+/* ---------- Comparison matrix ---------- */
+/* Horizontal overflow is confined to this container so the page body never
+   scrolls sideways. */
+.compare-matrix__scroll { margin-top: 24px; overflow-x: auto; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+.compare-matrix { width: 100%; border-collapse: separate; border-spacing: 0; }
+.compare-matrix th, .compare-matrix td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+.compare-matrix tbody tr:last-child th, .compare-matrix tbody tr:last-child td { border-bottom: 0; }
+.compare-matrix td { min-width: 208px; color: #b4c0c8; font-size: var(--font-card-body); line-height: 1.6; }
+
+/* Sticky row-label column keeps every row readable while scrolling sideways. */
+.compare-matrix .cmp-label, .compare-matrix__corner {
+  position: sticky; left: 0; z-index: 2; width: 190px; min-width: 190px;
+  background: var(--surface-2); color: var(--muted);
+  font: 600 11px "Chakra Petch", sans-serif; letter-spacing: .05em;
+}
+.compare-matrix thead th { position: sticky; top: 0; z-index: 3; background: var(--surface-3); border-bottom: 1px solid var(--line-strong); }
+.compare-matrix__corner { z-index: 4; }
+.compare-matrix__unit { min-width: 208px; }
+.cmp-head__tier { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 7px; color: #071009; font: 800 12px "Chakra Petch", sans-serif; }
+.cmp-head__code { display: block; margin-top: 7px; color: var(--text); font: 800 17px "Chakra Petch", sans-serif; letter-spacing: -.01em; }
+.cmp-head__code:hover { color: var(--green); }
+.cmp-head__code:focus-visible { outline: 2px solid rgba(154,245,96,.7); outline-offset: 2px; border-radius: 4px; }
+.cmp-head__name { display: block; margin-top: 3px; color: var(--muted); font-size: 12px; font-weight: 400; line-height: 1.45; }
+.cmp-head__country { display: block; margin-top: 8px; }
+
+.cmp-group th { background: rgba(154,245,96,.05); border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); position: static; }
+.cmp-group__title { display: block; color: var(--green); font: 700 10px "Chakra Petch", sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+.cmp-group__note { display: block; margin-top: 4px; max-width: 780px; color: #7d8c96; font: 400 12px "IBM Plex Sans Thai", sans-serif; letter-spacing: 0; line-height: 1.6; }
+
+/* Unknown values read as an explicit editorial state, never as a zero. */
+.cmp-unknown { color: #6d7c87; font-style: italic; }
+.cmp-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.cmp-tier { display: inline-flex; align-items: center; padding: 3px 9px; border-radius: 999px; color: #071009; font: 700 10px "Chakra Petch", sans-serif; letter-spacing: .06em; }
+.cmp-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; font: 700 10px "Chakra Petch", sans-serif; letter-spacing: .05em; }
+.cmp-badge::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+.cmp-badge--rich { color: var(--media-verified); border-color: color-mix(in srgb, var(--media-verified) 34%, transparent); }
+.cmp-badge--basic { color: var(--amber); border-color: color-mix(in srgb, var(--amber) 30%, transparent); }
+.cmp-badge--research-pending { color: var(--muted-2); }
+.cmp-indicator { display: grid; gap: 5px; }
+.cmp-indicator__value { color: var(--text); font: 700 15px "Chakra Petch", sans-serif; }
+.cmp-indicator__bar { display: block; height: 4px; border-radius: 999px; background: rgba(255,255,255,.08); overflow: hidden; }
+.cmp-indicator__bar i { display: block; height: 100%; border-radius: 999px; background: var(--green); }
+
+/* ---------- Compare responsive ---------- */
+@media (max-width: 880px) {
+  .detail-hero-compare { right: 20px; top: 22px; }
+  .compare-dock { width: calc(100% - 20px); bottom: max(10px, env(safe-area-inset-bottom, 0px)); border-radius: 15px; }
+  .compare-dock__inner { flex-wrap: wrap; gap: 10px; padding: 11px 12px; }
+  .compare-dock__chips { order: 3; width: 100%; flex-basis: 100%; }
+  .compare-dock__actions { margin-left: auto; }
+  body[data-compare-dock="open"] { padding-bottom: 178px; }
+  .compare-matrix .cmp-label, .compare-matrix__corner { width: 148px; min-width: 148px; }
+}
+@media (max-width: 620px) {
+  .compare-toggle { padding: 5px 8px; }
+  /* Icon plus accessible text only, to protect the narrow card corner. */
+  .compare-toggle--card .compare-toggle__text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .compare-dock__count { font-size: 13px; }
+  .compare-chip__country { display: none; }
+  .compare-dock__clear span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .compare-matrix td, .compare-matrix__unit { min-width: 178px; }
+  .compare-matrix .cmp-label, .compare-matrix__corner { width: 132px; min-width: 132px; }
+  .compare-matrix th, .compare-matrix td { padding: 10px 11px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .compare-toggle { transition: none; }
 }
